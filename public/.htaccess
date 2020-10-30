@@ -1,0 +1,45 @@
+Opciones -MultiViews -Indexes
+
+ 
+
+RewriteEngine On
+
+ 
+
+# Manejar el encabezado de autorización
+
+RewriteCond% {HTTP: Autorización}.
+
+RewriteRule. * - [E = HTTP_AUTHORIZATION:% {HTTP: Authorization}]
+
+ 
+
+# Redirigir barras finales si no es una carpeta ...
+
+RewriteCond% {REQUEST_FILENAME}! -D
+
+RewriteCond% {REQUEST_URI} (. +) / $
+
+RewriteRule ^% 1 [L, R = 301]
+
+ 
+
+# Manejar el controlador frontal ...
+
+RewriteCond% {REQUEST_URI}! (\. Css | \ .js | \ .png | \ .jpg | \ .gif | robots \ .txt) $ [NC]
+
+RewriteCond% {REQUEST_FILENAME}! -D
+
+RewriteCond% {REQUEST_FILENAME}! -F
+
+RewriteRule ^ index.php [L]
+
+ 
+
+RewriteCond% {REQUEST_FILENAME}! -D
+
+RewriteCond% {REQUEST_FILENAME}! -F
+
+RewriteCond% {REQUEST_URI}! ^ / Public /
+
+RewriteRule ^ (css | js | imágenes) / (. *) $ Public / $ 1 / $ 2 [L, NC]
