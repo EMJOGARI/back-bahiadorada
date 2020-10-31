@@ -5,29 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\User;
-use App\Vivienda;
-use App\Cuota;
 
 class CtaContController extends Controller
 {
     public function index()
-    {
-        $user = Auth::user();
-        if(permissionsAmin()){
-            $datos = DB::table('viviendas as v')
-            ->join('cuotas as c','c.id_vivienda','v.id')
-            ->get();
-        }else{
-            $datos = DB::table('viviendas as v')
-            ->join('cuotas as c','c.id_vivienda','v.id')
-            ->where('v.id_usuario',$user->id)
-            ->get();
-        }
+    {// $ss = number_format((float)$row['total'], 3, ',', '.'),
 
-       // dd($datos);
+        $datos = DB::table('resumenctascont')
+        ->get();
 
-        return view('estado-cuenta.index', compact('datos'));
 
+       dd( $datos);
+        return view('cuenta-contable.index', compact('datos'));
     }
 }

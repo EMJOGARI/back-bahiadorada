@@ -46,6 +46,7 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['module' => 'import','name' => 'import.csv','description' => 'Importar Data']);
 
         Permission::create(['module' => 'estado-cuenta','name' => 'estado-cuenta','description' => 'Cuenta Contable']);
+        Permission::create(['module' => 'cuenta-contable','name' => 'cuenta-contable','description' => 'Cuenta Contable']);
 
 
 
@@ -88,6 +89,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol3->givePermissionTo('user.update');
                 $rol3->givePermissionTo('user.profile.update');
                 $rol3->givePermissionTo('estado-cuenta');
+                $rol3->givePermissionTo('cuenta-contable');
 
         /******************************************************/
         // create users

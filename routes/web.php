@@ -82,11 +82,18 @@ Route::group(['prefix'=>'permisos','middleware' => ['auth']], function() {
     ->middleware('permission:permission.delete');
 });
 
-Route::group(['prefix'=>'estado-cuenta','middleware' => ['auth']], function() {
+
+Route::group(['prefix'=>'cuenta-contable','middleware' => ['auth']], function() {
     Route::get('/', 'CtaContController@index')
+    ->name('cuenta-contable.index')
+    ->middleware('permission:cuenta-contable');
+});
+
+Route::group(['prefix'=>'estado-cuenta','middleware' => ['auth']], function() {
+    Route::get('/', 'EdoCtaController@index')
     ->name('estado-cuenta.index')
     ->middleware('permission:estado-cuenta');
-});
+});//cuenta-contable
 
 Route::group(['prefix'=>'import-users','middleware' => ['auth']], function() {
     Route::get('/', 'ImportUsersController@index')

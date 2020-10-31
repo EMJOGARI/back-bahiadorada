@@ -12,7 +12,6 @@
 <div class="container-fluid spark-screen">
     <div class="row">
         <div class="col-md-12">
-
             <!-- Default box -->
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -27,7 +26,6 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
         </div>
     </div>
 </div>

@@ -12,24 +12,20 @@ class CtaContImport implements ToModel, WithCustomCsvSettings, WithHeadingRow
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
     public function model(array $row)
     {
-        //dd($row);
-        return new Cta_cont([
+        $data = new Cta_cont([
+            $bs = (float)(number_format((float)$row['total_bs'], 3, '.', ',')),
+            $ss = (float)(number_format((float)$row['total'], 3, '.', ',')),
             'id_ctacontable'  => $row['id_ctacontable'],
             'cod_ctacontable' => $row['nodo'],
             'nomctacontable' => $row['ctacontable'],
-            'mo_ctacontable_bs' => $row['total_bs'],
-            'mo_ctacontable_ss' => $row['total']
-
-            /*
-            "id_ctacontable" => 5
-            "nodo" => 5
-            "ctacontable" => "COSTOS"
-            "total_bs" => 2333333
-            "total" => "4,6666660000000000"
-            */
+            'mo_ctacontable_bs' => $bs,
+            'mo_ctacontable_ss' => $ss
         ]);
+        //dd($data);
+        return $data;
     }
     public function getCsvSettings(): array
     {

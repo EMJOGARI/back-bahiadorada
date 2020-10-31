@@ -41,8 +41,8 @@ class CreateTableGacondominio extends Migration
             $table->bigInteger('id_ctacontable');
             $table->string('nomctacontable', 100);
             $table->string('cod_ctacontable', 25);
-            $table->string('mo_ctacontable_bs'); //10,2
-            $table->string('mo_ctacontable_ss');
+            $table->float('mo_ctacontable_bs',10,2); //10,2
+            $table->float('mo_ctacontable_ss',10,2);
             $table->timestamps();
         });
 
