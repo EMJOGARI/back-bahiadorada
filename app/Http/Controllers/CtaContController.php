@@ -14,8 +14,6 @@ class CtaContController extends Controller
         $datos = DB::table('resumenctascont')
         ->get();
 
-
-       dd( $datos);
         return view('cuenta-contable.index', compact('datos'));
     }
 }

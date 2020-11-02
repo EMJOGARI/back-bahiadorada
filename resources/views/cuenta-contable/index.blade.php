@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Roles
+	Cuenta Contable
 @endsection
 
 @section('contentheader_title')
-	Roles
+    Cuenta Contable
 @endsection
 
 @section('main-content')
@@ -16,7 +16,7 @@
 				<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Lista de Roles </h3>
+						<h3 class="box-title">Cuenta Contable </h3>
 					</div>
 					<div class="box-body">
 						@include('cuenta-contable.partials.list')
