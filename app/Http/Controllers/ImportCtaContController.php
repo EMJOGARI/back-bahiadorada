@@ -17,6 +17,9 @@ class ImportCtaContController extends Controller
         /* $file = $request->file('file');
          Excel::import(new CtaContImport, $file);*/
          //dd($file);
+         //dd($request->file);
+         //'sueldo'=>'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/
+        // try{
 
             $this->validate($request, [
                 'file'  => 'required|mimes:cvs,txt'
@@ -24,9 +27,20 @@ class ImportCtaContController extends Controller
             [
                 'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
             ]);
+
             Excel::import(new CtaContImport,$request->file);
 
             flash('Cuentas Contables Cargados')->success();
+      //  }catch(\Exception $e){
+
+          //  flash('Error al cargar el archivo verifique las columnas')->warning();
+
+    	//}
+
+/*
+            dd($request->file);
+
+            flash('Cuentas Contables Cargados')->success();*/
 
          return view('import.ctacont.index');
      }
