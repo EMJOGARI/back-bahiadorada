@@ -14,13 +14,7 @@ class ImportCtaContController extends Controller
      }
      public function importCtaContCsv(Request $request)
      {
-        /* $file = $request->file('file');
-         Excel::import(new CtaContImport, $file);*/
-         //dd($file);
-         //dd($request->file);
-         //'sueldo'=>'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/
-        // try{
-
+        try{
             $this->validate($request, [
                 'file'  => 'required|mimes:cvs,txt'
             ],
@@ -31,16 +25,15 @@ class ImportCtaContController extends Controller
             Excel::import(new CtaContImport,$request->file);
 
             flash('Cuentas Contables Cargados')->success();
-      //  }catch(\Exception $e){
+        }catch(\Exception $e){
+            flash('Error al cargar el archivo'. $request->file .'verifique las columnas numerica separando con (.) los decimales')->warning();
+        }
 
-          //  flash('Error al cargar el archivo verifique las columnas')->warning();
-
-    	//}
-
-/*
-            dd($request->file);
-
-            flash('Cuentas Contables Cargados')->success();*/
+         /* $file = $request->file('file');
+         Excel::import(new CtaContImport, $file);*/
+         //dd($file);
+         //dd($request->file);
+         //'sueldo'=>'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/
 
          return view('import.ctacont.index');
      }

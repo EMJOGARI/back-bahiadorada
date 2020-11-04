@@ -14,10 +14,20 @@ class ImportEdoCtaController extends Controller
     }
     public function importEdoCtaCsv(Request $request)
     {
-        $file = $request->file('file');
-        Excel::import(new EdoCtaImport, $file);
+        try{
+            $this->validate($request, [
+                'file'  => 'required|mimes:cvs,txt'
+            ],
+            [
+                'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
+            ]);
 
-        flash('Estados de Cuentas Cargados')->success();
+            Excel::import(new EdoCtaImport,$request->file);
+
+            flash('Estados de Cuenta Cargados')->success();
+        }catch(\Exception $e){
+            flash('Error al cargar el archivo'. $request->file .'verifique las columnas numerica separando con (.) los decimales')->warning();
+        }
 
         return view('import.edocta.index');
     }

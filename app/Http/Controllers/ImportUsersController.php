@@ -17,10 +17,20 @@ class ImportUsersController extends Controller
     }
     public function importUsersCsv(Request $request)
     {
-        $file = $request->file('file');
-        Excel::import(new UsersImport, $file);
+        try{
+            $this->validate($request, [
+                'file'  => 'required|mimes:cvs,txt'
+            ],
+            [
+                'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
+            ]);
 
-        flash('Usuarios Cargados')->success();
+            Excel::import(new UsersImport,$request->file);
+
+            flash('Usuarios Cargados')->success();
+        }catch(\Exception $e){
+            flash('Error al cargar el archivo'. $request->file .'verifique las columnas')->warning();
+        }
 
         return view('import.users.index');
     }

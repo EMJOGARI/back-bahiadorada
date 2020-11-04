@@ -1,13 +1,4 @@
 @include('flash::message')
-@if(count($errors) > 0)
-	<div class="errors">
-		<ul>
-		@foreach($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-		</ul>
-	</div>
-@endif
 
 <div class="col-sm-6 col-xs-12">
     <div class="form-group">

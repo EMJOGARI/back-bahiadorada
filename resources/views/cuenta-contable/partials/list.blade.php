@@ -15,8 +15,8 @@
                 <td>{{ $dat->id_ctacontable }}</td>
                 <td>{{ $dat->nomctacontable }}</td>
                 <td>{{ $dat->cod_ctacontable }}</td>
-                <td>{{ $dat->mo_ctacontable_bs }}</td>
-                <td>{{ $dat->mo_ctacontable_ss }}</td>
+                <td>{{ number_format($dat->mo_ctacontable_bs, 2, ',', '.') }}</td>
+                <td>{{ number_format($dat->mo_ctacontable_ss, 2, ',', '.') }}</td>
             </tr>
         @endforeach
     </tbody>

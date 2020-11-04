@@ -14,11 +14,20 @@ class ImportViviendasController extends Controller
     }
     public function importViviendaCsv(Request $request)
     {
-        $file = $request->file('file');
-        Excel::import(new ViviendaImport, $file);
+        try{
+            $this->validate($request, [
+                'file'  => 'required|mimes:cvs,txt'
+            ],
+            [
+                'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
+            ]);
 
-        flash('Viviendas Cargadas')->success();
+            Excel::import(new ViviendaImport,$request->file);
 
+            flash('Viviendas Cargadas')->success();
+        }catch(\Exception $e){
+            flash('Error al cargar el archivo'. $request->file .'verifique las columnas')->warning();
+        }
         return view('import.vivienda.index');
     }
 }

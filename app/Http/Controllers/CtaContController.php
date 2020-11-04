@@ -12,7 +12,11 @@ class CtaContController extends Controller
     {// $ss = number_format((float)$row['total'], 3, ',', '.'),
 
         $datos = DB::table('resumenctascont')
-        ->get();
+            ->select('id_ctacontable','nomctacontable','cod_ctacontable', DB::raw('SUM(mo_ctacontable_bs) as mo_ctacontable_bs'), DB::raw('SUM(mo_ctacontable_ss) as mo_ctacontable_ss'))
+            ->groupBy('id_ctacontable','nomctacontable','cod_ctacontable')
+            ->get();
+
+           // dd($datos);
 
         return view('cuenta-contable.index', compact('datos'));
     }
