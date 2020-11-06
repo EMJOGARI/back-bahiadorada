@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12 content-header">
                 <h1>
-                    @yield('contentheader_title', 'Page Header here')
+                    @yield('contentheader_title', 'PÁGINA DE INICIO')
                     <small>@yield('contentheader_description')</small>
                 </h1>
                 <ol class="breadcrumb">
