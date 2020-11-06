@@ -16,17 +16,17 @@
                 </a>
             </li>
             --}}
-            @can('estado-cuenta')
-                <li class="{{ Request::is('cuenta-contable*') ? 'active' : '' }}">
-                    <a href="{{ url('cuenta-contable') }}">
-                        <i class='fa fa-arrow-right'></i>
-                        <span>Cuenta Contables</span>
-                    </a>
-                </li>
+            @can('estado-cuenta')               
                 <li class="{{ Request::is('estado-cuenta*') ? 'active' : '' }}">
                     <a href="{{ url('estado-cuenta') }}">
                         <i class='fa fa-arrow-right'></i>
                         <span>Estado de Cuentas</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('cuenta-contable*') ? 'active' : '' }}">
+                    <a href="{{ url('cuenta-contable') }}">
+                        <i class='fa fa-arrow-right'></i>
+                        <span>Cuenta Contables</span>
                     </a>
                 </li>
             @endcan

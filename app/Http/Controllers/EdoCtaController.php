@@ -20,8 +20,8 @@ class EdoCtaController extends Controller
             ->join('cuotas as c','c.id_vivienda','v.id')
             ->where('v.id_usuario',$user->id)
             ->get();
-        }
+        } 
        // dd($datos);
-        return view('estado-cuenta.index', compact('datos'));
+        return view('estado-cuenta.index', compact('datos','dias'));
     }
 }
