@@ -117,8 +117,9 @@ class UsersController extends Controller
         if ($request->password != null) {
             $usuario->password = bcrypt($request->password);
         }
+        $usuario->change_password = 1;
         $usuario->save();
 
-        return redirect()->back()->with('message', trans('adminlte_lang::message.updatesuccess'));
+        return redirect()->back()->with('message', trans('Contraseña Cambiada'));
     }
 }

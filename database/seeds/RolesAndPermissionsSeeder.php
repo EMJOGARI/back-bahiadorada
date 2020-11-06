@@ -96,7 +96,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $users_1 = Factory(App\User::class)->create([
             'id' => 9999,
             'name' => 'super-admin',
-            'email' => 'superadmin@test.com',
+            'email' => 'superadmin@bahiadorada.com',
             'password' => bcrypt('1234')
         ]);
         $users_1->assignRole($rol1);
@@ -104,7 +104,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $users_2 = Factory(App\User::class)->create([
             'id' => 8888,
             'name' => 'admin',
-            'email' => 'admin@test.com',
+            'email' => 'admin@bahiadorada.com',
             'password' => bcrypt('1234')
         ]);
         $users_2->assignRole($rol2);

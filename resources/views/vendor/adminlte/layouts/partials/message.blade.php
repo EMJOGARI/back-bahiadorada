@@ -1,6 +1,5 @@
 @if(session()->has('message'))
     <div class="alert alert-success">
-        <strong>{{ trans('adminlte_lang::message.message') }}!</strong><br><br>
         {{ session()->get('message') }}
     </div>
 @endif
