@@ -104,6 +104,13 @@ class UsersController extends Controller
         return view('user.edit', compact('user'));
     }
 
+    public function profileEditPass($id){
+        $id = decrypt($id);
+        $user = User::findOrFail($id);
+
+        return view('user.pass', compact('user'));
+    }
+
     public function profileUpdate(Request $request, $id)
     {
         $id = decrypt($id);
@@ -111,13 +118,12 @@ class UsersController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users,email,' . $id
+            'email' => 'required|unique:users,email,' . $id,
         ]);
         $usuario->update($request->except(['password']));
         if ($request->password != null) {
             $usuario->password = bcrypt($request->password);
         }
-        $usuario->change_password = 1;
         $usuario->save();
 
         return redirect()->back()->with('message', trans('Contraseña Cambiada'));

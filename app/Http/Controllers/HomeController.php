@@ -38,7 +38,7 @@ class HomeController extends Controller
             }else{
                 $id = Auth::user()->id;
                 $user = User::findOrFail($id);
-                return view('user.edit', compact('user'))->with('message', trans('Contraseña Cambiada'));
+                return view('user.pass', compact('user'))->with('message', trans('Contraseña Cambiada'));
             }
         }
        //return view('adminlte::home');
