@@ -126,6 +126,6 @@ class UsersController extends Controller
         }
         $usuario->save();
 
-        return redirect()->back()->with('message', trans('Contraseña Cambiada'));
+        return view('adminlte::home')->with('message', trans('Contraseña Cambiada'));
     }
 }

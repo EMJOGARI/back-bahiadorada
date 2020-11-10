@@ -17,19 +17,19 @@ class UsersImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
     public function model(array $row)
     {
         $rol = Role::all()->where('id',3)->pluck('name', 'id');
-      
+
         $data = new User([
             'id' => $row['id_usuario'],
-            'id_propietario' => $row['id_propietario'],
+            'id_propietario' => (int)$row['id_propietario'],
             'name' => $row['nombre'],
             'email' => Str::lower($row['usuario']), //upper($str)
-            'password' => bcrypt('12345'),               
-            ]); 
+            'password' => bcrypt('12345'),
+            ]);
         $data->assignRole($rol);
-        
-        return  $data;        
-    }   
-    
+
+        return  $data;
+    }
+
     public function getCsvSettings(): array
     {
         return [

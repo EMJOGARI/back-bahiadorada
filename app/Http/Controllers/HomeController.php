@@ -30,7 +30,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::check())        {
+        if (Auth::check())
+        {
+
+
+
+
+
+
+
+
+
             $null = Auth::user()->change_password;
             if ($null != null)
             {
@@ -38,7 +48,7 @@ class HomeController extends Controller
             }else{
                 $id = Auth::user()->id;
                 $user = User::findOrFail($id);
-                return view('user.pass', compact('user'))->with('message', trans('Contraseña Cambiada'));
+                return view('user.pass', compact('user'));
             }
         }
        //return view('adminlte::home');
