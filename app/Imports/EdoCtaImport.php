@@ -4,15 +4,16 @@ namespace App\Imports;
 
 use App\Cuota;
 use Maatwebsite\Excel\Concerns\{ToModel, WithCustomCsvSettings, WithHeadingRow};
-use Illuminate\Support\Str;
+use Carbon\Carbon;
+use DataTime;
 
 class EdoCtaImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
-{   
+{
     public function model(array $row)
     {
         $data = new Cuota([
-            'id' => $row['id'], 
-            'id_vivienda' => $row['id_vivienda'],      
+            'id' => $row['id'],
+            'id_vivienda' => $row['id_vivienda'],
             'fe_emision' => $row['fecha_emision'],
             'fe_vencimiento' => $row['fecha_vencimiento'],
             'fe_pago' => $row['fecha_pago'],
@@ -21,8 +22,9 @@ class EdoCtaImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
             'abono_cuota' => $row['abono_cuota'],
             'saldo_cuota' => $row['saldo_cuota'],
             'tipo' => $row['tipo'],
-            'status' => $row['status'], 
+            'status' => $row['status'],
         ]);
+        //dd($data);
         return $data;
     }
     public function getCsvSettings(): array

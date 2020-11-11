@@ -24,9 +24,9 @@ class CreateTableGacondominio extends Migration
         Schema::create('cuotas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_vivienda')->unsigned();
-            $table->date('fe_emision');
-            $table->date('fe_vencimiento');
-            $table->date('fe_pago');
+            $table->string('fe_emision');       //las coloque string manejo en back las fechas
+            $table->string('fe_vencimiento');   //las coloque string manejo en back las fechas
+            $table->string('fe_pago');          //las coloque string manejo en back las fechas
             $table->string('mo_cuota', 10, 2);
             $table->string('mora_cuota', 10, 2);
             $table->string('abono_cuota', 10, 2);

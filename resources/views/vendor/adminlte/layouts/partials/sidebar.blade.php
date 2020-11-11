@@ -16,7 +16,15 @@
                 </a>
             </li>
             --}}
-            @can('estado-cuenta')               
+            @can('vivienda.list')
+                <li class="{{ Request::is('viviendas*') ? 'active' : '' }}">
+                    <a href="{{ url('viviendas') }}">
+                        <i class='fa fa-arrow-right'></i>
+                        <span>Viviendas</span>
+                    </a>
+                </li>
+            @endcan
+            @can('estado-cuenta')
                 <li class="{{ Request::is('estado-cuenta*') ? 'active' : '' }}">
                     <a href="{{ url('estado-cuenta') }}">
                         <i class='fa fa-arrow-right'></i>

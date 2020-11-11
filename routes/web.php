@@ -83,6 +83,18 @@ Route::group(['prefix'=>'permisos','middleware' => ['auth']], function() {
 });
 
 
+Route::group(['prefix'=>'viviendas','middleware' => ['auth']], function() {
+    Route::get('/', 'ViviendasController@index')
+    ->name('viviendas.index')
+    ->middleware('permission:vivienda.list');
+    Route::get('{id}/edit', 'ViviendasController@edit')
+    ->name('viviendas.edit')
+    ->middleware('permission:vivienda.update');
+    Route::put('{id}/update', 'ViviendasController@update')
+    ->name('viviendas.update')
+    ->middleware('permission:vivienda.update');
+});
+
 Route::group(['prefix'=>'cuenta-contable','middleware' => ['auth']], function() {
     Route::get('/', 'CtaContController@index')
     ->name('cuenta-contable.index')
@@ -133,7 +145,10 @@ Route::group(['prefix'=>'import-ctacont','middleware' => ['auth']], function() {
 
 
 Route::get('/clear-cache', function() {
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
     Artisan::call('cache:clear');
+    Artisan::call('route:clear');
     return "Cache is cleared";
 });
 

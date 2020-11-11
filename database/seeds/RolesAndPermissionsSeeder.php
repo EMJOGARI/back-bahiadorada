@@ -38,6 +38,12 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['module' => 'permission','name' => 'permission.delete','description' => 'Eliminar un Permiso']);
         Permission::create(['module' => 'permission','name' => 'permission.list','description' => 'Listar Permisos']);
 
+        Permission::create(['module' => 'vivienda','name' => 'vivienda.create','description' => 'Crear un Vivienda']);
+        Permission::create(['module' => 'vivienda','name' => 'vivienda.read','description' => 'Ver un Vivienda']);
+        Permission::create(['module' => 'vivienda','name' => 'vivienda.update','description' => 'Actualizar un Vivienda']);
+        Permission::create(['module' => 'vivienda','name' => 'vivienda.delete','description' => 'Eliminar un Vivienda']);
+        Permission::create(['module' => 'vivienda','name' => 'vivienda.list','description' => 'Listar Vivienda']);
+
         Permission::create(['module' => 'cuotas','name' => 'cuotas.create','description' => 'Crear un Permiso']);
         Permission::create(['module' => 'cuotas','name' => 'cuotas.read','description' => 'Ver un Permiso']);
         Permission::create(['module' => 'cuotas','name' => 'cuotas.update','description' => 'Actualizar un Permiso']);
@@ -71,6 +77,10 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol2->givePermissionTo('user.delete');
                 $rol2->givePermissionTo('user.list');
                 $rol2->givePermissionTo('user.profile.update');
+                /*VIVIENDAS*/
+                $rol2->givePermissionTo('vivienda.read');
+                $rol2->givePermissionTo('vivienda.update');
+                $rol2->givePermissionTo('vivienda.list');
                 /*ROLES*/
                 $rol2->givePermissionTo('role.list');
                 /*PERMESSION*/
@@ -95,7 +105,6 @@ class RolesAndPermissionsSeeder extends Seeder
         /******************************************************/
         // create users
         $users_1 = Factory(App\User::class)->create([
-            'id' => 9999,
             'name' => 'super-admin',
             'email' => 'superadmin@bahiadorada.com.ve',
             'password' => bcrypt('1234')
@@ -103,7 +112,6 @@ class RolesAndPermissionsSeeder extends Seeder
         $users_1->assignRole($rol1);
 
         $users_2 = Factory(App\User::class)->create([
-            'id' => 8888,
             'name' => 'admin',
             'email' => 'admin@bahiadorada.com.ve',
             'password' => bcrypt('1234')

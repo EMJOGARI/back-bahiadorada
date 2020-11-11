@@ -26,6 +26,7 @@ class ImportEdoCtaController extends Controller
 
             flash('Estados de Cuenta Cargados')->success();
         }catch(\Exception $e){
+            //dd($e);
             flash('Error al cargar el archivo'. $request->file .'verifique las columnas numerica separando con (.) los decimales')->warning();
         }
 
