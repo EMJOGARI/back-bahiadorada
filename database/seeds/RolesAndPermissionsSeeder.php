@@ -79,7 +79,6 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol2->givePermissionTo('user.profile.update');
                 /*VIVIENDAS*/
                 $rol2->givePermissionTo('vivienda.read');
-                $rol2->givePermissionTo('vivienda.update');
                 $rol2->givePermissionTo('vivienda.list');
                 /*ROLES*/
                 $rol2->givePermissionTo('role.list');

@@ -87,12 +87,9 @@ Route::group(['prefix'=>'viviendas','middleware' => ['auth']], function() {
     Route::get('/', 'ViviendasController@index')
     ->name('viviendas.index')
     ->middleware('permission:vivienda.list');
-    Route::get('{id}/edit', 'ViviendasController@edit')
-    ->name('viviendas.edit')
-    ->middleware('permission:vivienda.update');
-    Route::put('{id}/update', 'ViviendasController@update')
-    ->name('viviendas.update')
-    ->middleware('permission:vivienda.update');
+    Route::get('{id}/show', 'ViviendasController@show')
+    ->name('viviendas.show')
+    ->middleware('permission:vivienda.read');
 });
 
 Route::group(['prefix'=>'cuenta-contable','middleware' => ['auth']], function() {

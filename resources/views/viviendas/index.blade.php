@@ -19,7 +19,7 @@
                         <h3 class="box-title">Viviendas </h3>
                     </div>
                     <div class="box-body">
-                        lista
+                        @include('viviendas.partials.list')
                     </div>
                     <!-- /.box-body -->
                 </div>

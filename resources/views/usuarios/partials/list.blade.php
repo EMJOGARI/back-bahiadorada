@@ -3,7 +3,7 @@
 @endpush
 <table class="table table-bordered data-table">
     <thead>
-        <th width="10%">ID</th>
+        <th width="10%">Nº Propietario</th>
         <th width="20%">Nombre</th>
         <th width="30%">E-mail</th>
         <th width="20%">Rol</th>
@@ -12,7 +12,7 @@
     <tbody>
         @foreach ($users as $usuario)
             <tr>
-                <td>{{ $usuario->id }}</td>
+                <td>{{ $usuario->id_propietario }}</td>
                 <td>{{ $usuario->name }}</td>
                 <td>{{ $usuario->email }}</td>
                 <td>{{ $usuario->roles->implode('name', ', ') }}</td>

@@ -18,10 +18,10 @@ class EdoCtaController extends Controller
         }else{
             $datos = DB::table('viviendas as v')
             ->join('cuotas as c','c.id_vivienda','v.id')
-            ->where('v.id_usuario',$user->id)
+            ->where('v.id_usuario',$user->id_propietario)
             ->get();
         } 
        // dd($datos);
-        return view('estado-cuenta.index', compact('datos','dias'));
+        return view('estado-cuenta.index', compact('datos'));
     }
 }
