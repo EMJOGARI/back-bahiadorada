@@ -16,7 +16,7 @@
                 <td class="text-center">{{ $dat->vivienda }}</td>
                 <td class="text-center">
                     @can('vivienda.read')
-                        <a href="{{ URL::action('ViviendasController@show',encrypt($dat->id_usuario)) }}">
+                        <a href="{{ URL::action('ViviendasController@show',encrypt($dat->id_user)) }}">
                             {{ Form::button(
                                 '<i class="fa fa-eye"></i>',
                                     [
@@ -27,8 +27,8 @@
                                     ]
                             )}}
                         </a>
-                    @endcan                    
-                                
+                    @endcan
+
                 </td>
             </tr>
         @endforeach

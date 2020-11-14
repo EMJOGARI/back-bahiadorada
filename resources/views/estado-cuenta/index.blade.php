@@ -16,7 +16,7 @@
 				<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Estado de Cuenta </h3>
+						<h3 class="box-title">Cuotas - Saldo Pendiente: {{ $pendiente }}</h3>
 					</div>
 					<div class="box-body">
 						@include('estado-cuenta.partials.list')

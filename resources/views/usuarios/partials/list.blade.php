@@ -12,7 +12,7 @@
     <tbody>
         @foreach ($users as $usuario)
             <tr>
-                <td>{{ $usuario->id_propietario }}</td>
+                <td>{{ $usuario->id_user }}</td>
                 <td>{{ $usuario->name }}</td>
                 <td>{{ $usuario->email }}</td>
                 <td>{{ $usuario->roles->implode('name', ', ') }}</td>

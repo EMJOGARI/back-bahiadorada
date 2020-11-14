@@ -16,14 +16,16 @@ class CuotasController extends Controller
         $user = Auth::user();
         if(permissionsAmin()){
             $datos = DB::table('viviendas as v')
-            ->join('cuotas as c','c.id_vivienda','v.id')
+            ->join('cuotas as c','c.id_vivienda','v.id_vivienda')
             ->get();
         }else{
             $datos = DB::table('viviendas as v')
-            ->join('cuotas as c','c.id_vivienda','v.id')
-            ->where('v.id_usuario',$user->id_propietario)
+            ->join('cuotas as c','c.id_vivienda','v.id_vivienda')
+            ->where('v.id_usuario',$user->id_user)
             ->get();
         }
+
+        dd($datos);
         return view('cuotas.index', compact('datos'));
 
     }

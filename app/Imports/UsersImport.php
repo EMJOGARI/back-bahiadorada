@@ -19,7 +19,7 @@ class UsersImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
         $rol = Role::all()->where('id',3)->pluck('name', 'id');
 
         $data = new User([
-            'id' => $row['id_usuario'],
+            'id_user' => $row['id_usuario'],
             'id_propietario' => (int)$row['id_propietario'],
             'name' => $row['nombre'],
             'email' => Str::lower($row['usuario']), //upper($str)

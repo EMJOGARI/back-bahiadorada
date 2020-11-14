@@ -103,7 +103,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol3->givePermissionTo('user.read');
                 $rol3->givePermissionTo('user.update');
                 $rol3->givePermissionTo('user.profile.update');
-                $rol2->givePermissionTo('bahia.list');
+                $rol3->givePermissionTo('bahia.list');
                 $rol3->givePermissionTo('estado-cuenta');
                 $rol3->givePermissionTo('cuenta-contable');
 

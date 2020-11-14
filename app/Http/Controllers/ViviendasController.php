@@ -11,28 +11,37 @@ class ViviendasController extends Controller
 {
     public function index()
     {
-        $datos = DB::table('viviendas as v')
-            ->join('users as u','u.id_propietario','v.id_usuario')
-            ->get();          
+        $datos = DB::table('users as u')
+            ->join( 'viviendas as v','v.id','u.id_user')
+            ->get();
+            //dd($datos);
         return view('viviendas.index', compact('datos'));
-    } 
-    public function show($id_usuario)
-    {   
-        $id = decrypt($id_usuario);     
-        $vivienda = DB::table('viviendas')
-        ->where('id_usuario',$id)
-        ->first();
+    }
+    public function show($id_user)
+    {
+        $id = decrypt($id_user);
 
         $user = DB::table('users as u')
-        ->where('id_propietario',$vivienda->id_usuario)
+        ->where('id_user',$id)
         ->first();
-        
+
+        $vivienda = DB::table('viviendas')
+        ->where('id',$user->id_user)
+        ->first();
+
         $ctacon = DB::table('cuotas')
-            ->where('id_vivienda',$vivienda->id)
+            ->where('id_vivienda',$vivienda->id_usuario)
             ->get();
-         
-           // dd($vivienda, $user, $ctacon);          
-        return view("viviendas.show", compact('user','vivienda','ctacon'));
+            //dd($ctacon);
+        $saldo = 0;
+        foreach ($ctacon as $cc) {
+            if ($cc->status == 'PENDIENTE'){
+                $float = (float)$cc->saldo_cuota;
+                $saldo = $saldo + $float;
+            }
+            $pendiente = number_format($saldo, 2,',','.');
+        }
+        return view("viviendas.show", compact('user','vivienda','ctacon','pendiente'));
     }
-    
+
 }

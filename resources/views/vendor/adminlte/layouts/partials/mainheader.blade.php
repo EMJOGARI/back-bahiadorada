@@ -27,8 +27,8 @@
                     <li class="dropdown user user-menu" id="user_menu" style="max-width: 280px;white-space: nowrap;">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="max-width: 280px;white-space: nowrap;overflow: hidden;overflow-text: ellipsis">
-                            <!-- The user image in the navbar-->
-                            <img src="{{ url('/img/silueta.png') }}" class="user-image" alt="User Image"/>
+                            <!-- The user image in the navbar -->
+                            <i class="fa fa-user-circle user-image" aria-hidden="true" style="font-size: 2rem"></i>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs" data-toggle="tooltip" title="{{ Auth::user()->name }}">{{ Auth::user()->name }}</span>
                         </a>

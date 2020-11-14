@@ -3,7 +3,6 @@
 @endpush
 <table class="table table-bordered data-table">
     <thead>
-        <th>Vivienda</th>
         <th>Fecha Emi.</th>
         <th>Fecha Ven.</th>
         <th>Fecha Pago</th>
@@ -14,9 +13,8 @@
         <th>Status</th>
     </thead>
     <tbody>
-        @foreach ($ctacon as $cc)       
+        @foreach ($ctacon as $cc)
             <tr>
-                <td>{{ $cc->id_vivienda }}</td>
                 <td>{{ $cc->fe_emision }}</td>
                 <td>{{ $cc->fe_vencimiento }}</td>
                 <td>{{ $cc->fe_pago }}</td>
@@ -26,7 +24,7 @@
                 <td>{{ $cc->tipo }}</td>
                 <td>{{ $cc->status }}</td>
             </tr>
-        @endforeach       
+        @endforeach
     </tbody>
 </table>
 

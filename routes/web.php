@@ -145,6 +145,15 @@ Route::group(['prefix'=>'import-ctacont','middleware' => ['auth']], function() {
     ->middleware('permission:import.csv');
 });
 
+Route::group(['prefix'=>'import-bahia','middleware' => ['auth']], function() {
+    Route::get('/', 'ImportBahiaController@index')
+    ->name('import.bahia.index')
+    ->middleware('permission:import.csv');
+    Route::post('/', 'ImportBahiaController@importBahiaCsv')
+    ->name('import.bahia.csv')
+    ->middleware('permission:import.csv');
+});
+
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
@@ -153,6 +162,11 @@ Route::get('/clear-cache', function() {
     Artisan::call('route:clear');
     return "Cache is cleared";
 });
-
+//->middleware('auth', 'role:admin');
+Route::get('/bdrefresh', function() {
+    Artisan::call('migrate:refresh --seed');
+    return "Refresh Data Base";
+});
+//php artisan migrate:refresh --seed
 
 

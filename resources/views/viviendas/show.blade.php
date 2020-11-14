@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Viviendas 
+	Viviendas
 @endsection
 
 @section('contentheader_title')
@@ -21,21 +21,12 @@
                     <div class="box-body">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Nº Propietario</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                                    <input type="number" class="form-control" value="{{ $vivienda->id_usuario }}" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
                                 <label>Vivienda</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-home"></i></span>
                                     <input type="text" class="form-control" value="{{ $vivienda->vivienda }}" disabled>
-                                </div>                               
-                             </div>                            
+                                </div>
+                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="form-group">
@@ -45,7 +36,7 @@
                                     <input type="text" class="form-control" value="{{ $user->email }}" disabled>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -55,7 +46,7 @@
 				<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Cuenta Contable </h3>
+                    <h3 class="box-title">Cuotas - Saldo Pendiente: {{ $pendiente }}</h3>
 					</div>
 					<div class="box-body">
 						@include('viviendas.partials.list-ctacon')
@@ -65,14 +56,14 @@
 				<!-- /.box -->
 
 			</div>
-           
-
-            
-           
-            
 
 
-           
+
+
+
+
+
+
         </div>
     </div>
 @endsection

@@ -115,6 +115,12 @@
                                 <span>Cuenta Contable</span>
                             </a>
                         </li>
+                        <li class="{{ Request::is('import-bahia*') ? 'active' : '' }}">
+                            <a href="{{ url('import-bahia') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>BAHIA AL DIA</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             @endcan

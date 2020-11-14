@@ -16,7 +16,7 @@
     <tbody>
         @foreach ($datos as $dat)
             <tr>
-                <td>{{ $dat->id_vivienda }}</td>
+                <td>{{ $dat->vivienda }}</td>
                 <td>{{ $dat->fe_emision }}</td>
                 <td>{{ $dat->fe_vencimiento }}</td>
                 <td>{{ $dat->fe_pago }}</td>
