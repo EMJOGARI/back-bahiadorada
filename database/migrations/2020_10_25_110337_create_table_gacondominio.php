@@ -14,6 +14,14 @@ class CreateTableGacondominio extends Migration
     public function up()
     {
         //->nullable()
+        Schema::create('bahia-al-dia', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('fecha');
+            $table->string('area');
+            $table->string('actividad');
+            $table->timestamps();
+        });
+
         Schema::create('viviendas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_usuario')->unsigned();
@@ -69,6 +77,7 @@ class CreateTableGacondominio extends Migration
             $table->dropForeign(['id_vivienda']);
         });
 
+        Schema::dropIfExists('bahia-al-dia');
         Schema::dropIfExists('viviendas');
         Schema::dropIfExists('cuotas');
         Schema::dropIfExists('resumenctascont');

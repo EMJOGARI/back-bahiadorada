@@ -16,6 +16,14 @@
                 </a>
             </li>
             --}}
+            @can('bahia.list')
+            <li class="{{ Request::is('bahia*') ? 'active' : '' }}">
+                <a href="{{ url('bahia') }}">
+                    <i class='fa fa-arrow-right'></i>
+                    <span>BAHIA AL DIA</span>
+                </a>
+            </li>
+            @endcan
             @can('vivienda.list')
                 <li class="{{ Request::is('viviendas*') ? 'active' : '' }}">
                     <a href="{{ url('viviendas') }}">
@@ -31,6 +39,8 @@
                         <span>Estado de Cuentas</span>
                     </a>
                 </li>
+            @endcan
+            @can('cuenta-contable')
                 <li class="{{ Request::is('cuenta-contable*') ? 'active' : '' }}">
                     <a href="{{ url('cuenta-contable') }}">
                         <i class='fa fa-arrow-right'></i>

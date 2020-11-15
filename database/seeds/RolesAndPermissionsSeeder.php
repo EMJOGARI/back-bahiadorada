@@ -55,6 +55,8 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['module' => 'estado-cuenta','name' => 'estado-cuenta','description' => 'Cuenta Contable']);
         Permission::create(['module' => 'cuenta-contable','name' => 'cuenta-contable','description' => 'Cuenta Contable']);
 
+        Permission::create(['module' => 'bahia','name' => 'bahia.list','description' => 'BAHIA AL DIA']);
+
 
 
         // create roles and assign existing permissions
@@ -86,6 +88,9 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol2->givePermissionTo('permission.list');
                 /*CUOTAS*/
                 $rol2->givePermissionTo('estado-cuenta');
+                $rol2->givePermissionTo('cuenta-contable');
+                /*BAHIA AL DIA*/
+                $rol2->givePermissionTo('bahia.list');
                 /*IMPORTS USER CSV*/
                 $rol2->givePermissionTo('import.csv');
 
@@ -98,6 +103,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol3->givePermissionTo('user.read');
                 $rol3->givePermissionTo('user.update');
                 $rol3->givePermissionTo('user.profile.update');
+                $rol2->givePermissionTo('bahia.list');
                 $rol3->givePermissionTo('estado-cuenta');
                 $rol3->givePermissionTo('cuenta-contable');
 

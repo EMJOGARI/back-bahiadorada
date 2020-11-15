@@ -82,6 +82,11 @@ Route::group(['prefix'=>'permisos','middleware' => ['auth']], function() {
     ->middleware('permission:permission.delete');
 });
 
+Route::group(['prefix'=>'bahia','middleware' => ['auth']], function() {
+    Route::get('/', 'BahiaAlDiaController@index')
+    ->name('bahia.index')
+    ->middleware('permission:bahia.list');
+});
 
 Route::group(['prefix'=>'viviendas','middleware' => ['auth']], function() {
     Route::get('/', 'ViviendasController@index')
