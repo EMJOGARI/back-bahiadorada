@@ -20,7 +20,7 @@ class ViviendasController extends Controller
     public function show($id_user)
     {
         $id = decrypt($id_user);
-
+        $pendiente = 0;
         $user = DB::table('users as u')
         ->where('id_user',$id)
         ->first();
@@ -33,14 +33,17 @@ class ViviendasController extends Controller
             ->where('id_vivienda',$vivienda->id_usuario)
             ->get();
             //dd($ctacon);
-        $saldo = 0;
-        foreach ($ctacon as $cc) {
-            if ($cc->status == 'PENDIENTE'){
-                $float = (float)$cc->saldo_cuota;
-                $saldo = $saldo + $float;
+        if ($ctacon != ""){
+            $saldo = 0;
+            foreach ($ctacon as $cc) {
+                if ($cc->status == 'PENDIENTE'){
+                    $float = (float)$cc->saldo_cuota;
+                    $saldo = $saldo + $float;
+                }
+                $pendiente = number_format($saldo, 2,',','.');
             }
-            $pendiente = number_format($saldo, 2,',','.');
         }
+        //dd($saldo, $float, $pendiente);
         return view("viviendas.show", compact('user','vivienda','ctacon','pendiente'));
     }
 

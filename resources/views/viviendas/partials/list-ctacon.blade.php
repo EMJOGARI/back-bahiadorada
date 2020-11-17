@@ -33,7 +33,8 @@
 <script>
     $(document).ready(function() {
         var table = $('.data-table').DataTable( {
-            fixedHeader: true
+            fixedHeader: true,
+            responsive: true
         } );
     } );
 </script>

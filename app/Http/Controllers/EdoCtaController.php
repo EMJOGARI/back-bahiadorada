@@ -10,21 +10,23 @@ class EdoCtaController extends Controller
 {
     public function index()
     {
+        $pendiente = 0;
         $user = Auth::user();
         if(permissionsAmin()){
             $datos = DB::table('users as u')
             ->join( 'viviendas as v','v.id','u.id_user')
             ->join('cuotas as c','c.id_vivienda','v.id_usuario')
             ->get();
-
-            $saldo = 0;
-            foreach ($datos as $cc) {
-                if ($cc->status == 'PENDIENTE'){
-                    $float = (float)$cc->saldo_cuota;
-                    $saldo = $saldo + $float;
+            if ($datos != ""){
+                $saldo = 0;
+                foreach ($datos as $cc) {
+                    if ($cc->status == 'PENDIENTE'){
+                        $float = (float)$cc->saldo_cuota;
+                        $saldo = $saldo + $float;
+                    }
+                    $pendiente = number_format($saldo, 2,',','.');
                 }
-                $pendiente = number_format($saldo, 2,',','.');
-            }
+            }           
         }else{
             $datos = DB::table('users as u')
             ->join('viviendas as v','v.id','u.id_user')
@@ -32,17 +34,19 @@ class EdoCtaController extends Controller
             ->where('u.id_user',$user->id_user)
             ->get();
 
-            $saldo = 0;
-            foreach ($datos as $cc) {
-                if ($cc->status == 'PENDIENTE'){
-                    $float = (float)$cc->saldo_cuota;
-                    $saldo = $saldo + $float;
+            if ($datos != ""){
+                $saldo = 0;
+                foreach ($datos as $cc) {
+                    if ($cc->status == 'PENDIENTE'){
+                        $float = (float)$cc->saldo_cuota;
+                        $saldo = $saldo + $float;
+                    }
+                    $pendiente = number_format($saldo, 2,',','.');
                 }
-                $pendiente = number_format($saldo, 2,',','.');
             }
         }
 
-       //dd($datos, $pendiente);
+        //dd($datos, $pendiente);
         return view('estado-cuenta.index', compact('datos','pendiente'));
     }
 }
