@@ -1,7 +1,7 @@
 @push('css')
     <link href="{{ asset('/plugins/DataTable/datatables.min.css') }}" rel="stylesheet" type="text/css"/>
 @endpush
-<table class="table table-bordered data-table">
+<table class="table table-bordered data-table" style="width:100%">
     <thead>
         <th>Fecha Emi.</th>
         <th>Fecha Ven.</th>
@@ -34,7 +34,18 @@
     $(document).ready(function() {
         var table = $('.data-table').DataTable( {
             fixedHeader: true,
-            responsive: true
+           // responsive: true
+           responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for '+data[0]+' '+data[1];
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+            }
+        }
         } );
     } );
 </script>
