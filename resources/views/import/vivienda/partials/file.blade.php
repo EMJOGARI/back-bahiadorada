@@ -1,5 +1,3 @@
-@include('flash::message')
-
 <div class="col-sm-6 col-xs-12">
     <div class="form-group">
       {!! Form::label('file', 'Data de Viviendas .CSV') !!}
@@ -19,7 +17,6 @@
 </div>
 @push('scripts')
     <script>
-        $('div.alert').delay(3000).fadeOut(350);
         $("#file").change(function(){
             $("button").prop("disabled", this.files.length == 0);
         });

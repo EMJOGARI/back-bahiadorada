@@ -123,9 +123,11 @@ class UsersController extends Controller
         $usuario->update($request->except(['password']));
         if ($request->password != null) {
             $usuario->password = bcrypt($request->password);
+            $usuario->change_password = 1;
+
         }
         $usuario->save();
-
-        return view('adminlte::home')->with('message', trans('Contraseña Cambiada'));
+        flash('Contraseña Cambiada')->success();
+        return view('adminlte::home');
     }
 }
