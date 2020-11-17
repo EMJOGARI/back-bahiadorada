@@ -1,7 +1,7 @@
 @push('css')
     <link href="{{ asset('/plugins/DataTable/datatables.min.css') }}" rel="stylesheet" type="text/css"/>
 @endpush
-<table class="table table-bordered data-table">
+<table class="table table-bordered data-table display nowrap" style="width:100%">
     <thead>
         <th width="10%">Nº Propietario</th>
         <th width="20%">Nombre</th>
@@ -82,9 +82,21 @@
 <script src="{{ asset('/plugins/DataTable/datatables.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-        var table = $('.data-table').DataTable( {
-            fixedHeader: true
-        } );
-    } );
+        var table = $('.data-table').DataTable({
+                fixedHeader: true,
+                //responsive: true
+                responsive:{
+                    details:{
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                var data = row.data();
+                                return 'Details for '+data[0]+' '+data[1];
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+                    }
+                }
+            });
+    });
 </script>
 @endpush
