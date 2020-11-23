@@ -16,7 +16,15 @@
 				<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Cuotas - Saldo Pendiente: {{ $pendiente }}</h3>
+						<div class="row">
+							<div class="col-md-4">
+								<h3 class="box-title">Cuotas - Saldo Pendiente: {{ $pendiente }}</h3>
+							</div>
+							<div class="col-md-8">
+								<h5>a.- las cuotas ordinarias solo se pagarán en dólares efectivos o transferencia.</h5>
+								<h5>b.- para el pago de su saldo pendiente debe regirse la tasa del día del Banco Central de Venezuela.</h5>
+							</div>
+						</div>
 					</div>
 					<div class="box-body">
 						@include('estado-cuenta.partials.list')

@@ -290,5 +290,8 @@ select.input-sm {
     flex-direction: column;
 }
 
+.sidebar .widget .eapps-link{
+    display: none!important;
+}
 
 /** #202146 */

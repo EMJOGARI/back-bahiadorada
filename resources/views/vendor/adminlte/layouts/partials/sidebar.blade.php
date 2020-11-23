@@ -125,6 +125,11 @@
                 </li>
             @endcan
         </ul><!-- /.sidebar-menu -->
+        <div class="widget">
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-0d558f3a-751e-478f-8ead-1e067438e5c1"></div>
+        </div>
     </section>
+
     <!-- /.sidebar -->
 </aside>
