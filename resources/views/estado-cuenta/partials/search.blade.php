@@ -1,9 +1,13 @@
+@push('css')
+<link rel="stylesheet" href="{{ asset('plugins/select2/select2.css') }}">
+@endpush
+
 {!! Form::open(array('url'=>'estado-cuenta', 'method'=>'GET', 'autocomplete'=>'off', 'role'=>'search' )) !!}
     <div class="input-group">
-        <select name="cliente" id="cliente" class="form-control selectpicker" data-live-search="true">
+        <select name="livingplace" id="livingplace" class="form-control select2">
                 <option value="">Seleccioné una Vivienda</option>
            @foreach($living as $liv)
-                <option value="{{ $liv->id_user }}">{{ $liv->vivienda }}</option>
+                <option value="{{ $liv->vivienda }}">{{ $liv->vivienda.' - '.$liv->name }}</option>
             @endforeach
         </select>
         <span class="input-group-btn">
@@ -11,3 +15,10 @@
         </span>
     </div>
 {{ Form::close() }}
+
+@push('scripts')
+<script src="{{ asset('plugins/select2/select2.js') }}"></script>
+<script>
+    $('.select2').select2();
+</script>
+@endpush

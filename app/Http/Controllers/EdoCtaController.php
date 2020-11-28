@@ -21,6 +21,9 @@ class EdoCtaController extends Controller
             $datos = DB::table('users as u')
             ->join( 'viviendas as v','v.id','u.id_user')
             ->join('cuotas as c','c.id_vivienda','v.id_usuario')
+            ->when($livingplace, function ($query, $livingplace) {
+                return $query->where('v.vivienda','like',$livingplace);
+            })
             ->get();
             if ($datos != ""){
                 $saldo = 0;
@@ -42,7 +45,7 @@ class EdoCtaController extends Controller
             ->join('cuotas as c','c.id_vivienda','v.id_usuario')
             ->where('u.id_user',$user->id_user)
             ->when($livingplace, function ($query, $livingplace) {
-                return $query->where('v.id_vivienda','=',$livingplace);
+                return $query->where('v.vivienda','=',$livingplace);
             })
             ->get();
 
