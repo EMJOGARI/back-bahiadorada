@@ -12,7 +12,7 @@ class ViviendasController extends Controller
     public function index()
     {
         $datos = DB::table('users as u')
-            ->join( 'viviendas as v','v.id','u.id_user')
+            ->join( 'viviendas as v','v.id_usuario','u.id_user')
             ->get();
             //dd($datos);
         return view('viviendas.index', compact('datos'));
@@ -26,7 +26,7 @@ class ViviendasController extends Controller
         ->first();
 
         $vivienda = DB::table('viviendas')
-        ->where('id',$user->id_user)
+        ->where('id_usuario',$user->id_user)
         ->first();
 
         $ctacon = DB::table('cuotas')

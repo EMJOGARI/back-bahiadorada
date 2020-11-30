@@ -25,6 +25,7 @@ class CreateTableGacondominio extends Migration
         Schema::create('viviendas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_usuario')->unsigned();
+            $table->bigInteger('id_vivienda');
             $table->string('vivienda', 8);
             $table->timestamps();
         });
