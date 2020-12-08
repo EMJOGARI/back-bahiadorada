@@ -24,7 +24,7 @@ class CreateTableGacondominio extends Migration
 
         Schema::create('viviendas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_usuario')->unsigned();
+            $table->bigInteger('id_usuario');//->unsigned();
             $table->bigInteger('id_vivienda');
             $table->string('vivienda', 8);
             $table->timestamps();
@@ -32,14 +32,14 @@ class CreateTableGacondominio extends Migration
 
         Schema::create('cuotas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_vivienda')->unsigned();
+            $table->bigInteger('id_vivienda');//->unsigned();
             $table->string('fe_emision');       //las coloque string manejo en back las fechas
             $table->string('fe_vencimiento');   //las coloque string manejo en back las fechas
             $table->string('fe_pago');          //las coloque string manejo en back las fechas
-            $table->string('mo_cuota', 10, 2);
-            $table->string('mora_cuota', 10, 2);
-            $table->string('abono_cuota', 10, 2);
-            $table->string('saldo_cuota', 10, 2);
+            $table->string('mo_cuota');
+            $table->string('mora_cuota');
+            $table->string('abono_cuota');
+            $table->string('saldo_cuota');
             $table->string('tipo', 100);
             $table->string('status', 100);
             $table->timestamps();
@@ -55,13 +55,13 @@ class CreateTableGacondominio extends Migration
             $table->timestamps();
         });
 
-        Schema::table('viviendas', function (Blueprint $table) {
+       /* Schema::table('viviendas', function (Blueprint $table) {
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('cuotas', function (Blueprint $table) {
             $table->foreign('id_vivienda')->references('id')->on('viviendas')->onDelete('cascade');
-        });
+        });*/
     }
 
     /**
@@ -71,12 +71,12 @@ class CreateTableGacondominio extends Migration
      */
     public function down()
     {
-        Schema::table('viviendas', function (Blueprint $table) {
+        /*Schema::table('viviendas', function (Blueprint $table) {
             $table->dropForeign(['id_usuario']);
         });
         Schema::table('cuotas', function (Blueprint $table) {
             $table->dropForeign(['id_vivienda']);
-        });
+        });*/
 
         Schema::dropIfExists('bahia-al-dia');
         Schema::dropIfExists('viviendas');

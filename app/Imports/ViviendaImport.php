@@ -9,6 +9,7 @@ class ViviendaImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
 {
     public function model(array $row)
     {
+        //dd($row);
         $data = new Vivienda([
             'id_usuario' => $row['id_usuario'],
             'id_vivienda'  => $row['id_vivienda'],

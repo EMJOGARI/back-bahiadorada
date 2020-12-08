@@ -11,7 +11,9 @@ class EdoCtaImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
 {
     public function model(array $row)
     {
+        //dd($row);
         $data = new Cuota([
+            $saldo = $row['saldo_cuota'],
             'id' => $row['id'],
             'id_vivienda' => $row['id_vivienda'],
             'fe_emision' => $row['fecha_emision'],
@@ -20,9 +22,10 @@ class EdoCtaImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
             'mo_cuota' => $row['monto_cuota'],
             'mora_cuota' => $row['mora_cuota'],
             'abono_cuota' => $row['abono_cuota'],
-            'saldo_cuota' => $row['saldo_cuota'],
+            'saldo_cuota' => (string) $saldo,
             'tipo' => $row['tipo'],
             'status' => $row['status'],
+            //string('saldo_cuota'); number_format((double)$row['total_bs'], 3, '.', ',')
         ]);
         //dd($data);
         return $data;

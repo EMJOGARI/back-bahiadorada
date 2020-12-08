@@ -160,6 +160,7 @@ Route::get('/clear-cache', function() {
     Artisan::call('config:cache');
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
+    Artisan::call('view:clear');
     return "Cache is cleared";
 });
 //->middleware('auth', 'role:admin');

@@ -26,6 +26,7 @@ class ImportViviendasController extends Controller
 
             flash('Viviendas Cargadas')->success();
         }catch(\Exception $e){
+            //dd($e);
             flash('Error al cargar el archivo'. $request->file .'verifique las columnas')->warning();
         }
         return view('import.vivienda.index');
