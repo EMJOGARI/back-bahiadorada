@@ -20,7 +20,7 @@ class EdoCtaController extends Controller
             ->get();
             $datos = DB::table('users as u')
             ->join( 'viviendas as v','v.id_usuario','u.id_user')
-            ->join('cuotas as c','c.id_vivienda','v.id_usuario')
+            ->join('cuotas as c','c.id_vivienda','v.id_vivienda')
             ->when($livingplace, function ($query, $livingplace) {
                 return $query->where('v.vivienda','like',$livingplace);
             })
@@ -42,7 +42,7 @@ class EdoCtaController extends Controller
                 ->get();
             $datos = DB::table('users as u')
             ->join('viviendas as v','v.id_usuario','u.id_user')
-            ->join('cuotas as c','c.id_vivienda','v.id_usuario')
+            ->join('cuotas as c','c.id_vivienda','v.id_vivienda')
             ->where('u.id_user',$user->id_user)
             ->when($livingplace, function ($query, $livingplace) {
                 return $query->where('v.vivienda','=',$livingplace);
@@ -61,7 +61,7 @@ class EdoCtaController extends Controller
             }
         }
 
-        //dd($datos, $living);
+       //dd($datos, $living);
         return view('estado-cuenta.index', compact('datos','pendiente','living'));
     }
 }
