@@ -154,6 +154,13 @@ Route::group(['prefix'=>'import-bahia','middleware' => ['auth']], function() {
     ->middleware('permission:import.csv');
 });
 
+Route::group(['prefix'=>'charst','middleware' => ['auth']], function() {
+    Route::get('/', 'ChrastController@slow_payer')
+    ->name('charst.index')
+    ->middleware('permission:charst');
+
+});
+Route::resource('principal/index', 'InicioController');
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');

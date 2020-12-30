@@ -48,6 +48,14 @@
                     </a>
                 </li>
             @endcan
+            @can('charst')
+            <li class="{{ Request::is('charst*') ? 'active' : '' }}">
+                <a href="{{ url('charst') }}">
+                    <i class='fa fa-arrow-right'></i>
+                    <span>Grafico de Morosos</span>
+                </a>
+            </li>
+            @endcan
             @canany(['user.list','role.list','permission.list'])
                 <li class="treeview {{ Request::is('usuarios*') || Request::is('roles*') || Request::is('permisos*') ? 'active' : '' }}">
                     <a href="#">
