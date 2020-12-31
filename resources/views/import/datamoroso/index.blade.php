@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Importar Bahia al Dia
+	Importar Datos Morosos
 @endsection
 
 @section('contentheader_title')
-    Importar Bahia al Dia
+    Importar Datos Morosos
 @endsection
 
 @section('main-content')
@@ -19,9 +19,9 @@
                     <!--h3 class="box-title"> Importar Cuenta Contable</h3-->
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['route' => ['import.bahia.csv'],'enctype' => 'multipart/form-data', 'id' => 'form']) !!}
+                    {!! Form::open(['route' => ['import.datamoroso.csv'],'enctype' => 'multipart/form-data', 'id' => 'form']) !!}
                     {{ Form::token() }}
-                        @include('import.bahia.partials.file')
+                        @include('import.datamoroso.partials.file')
                     {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->

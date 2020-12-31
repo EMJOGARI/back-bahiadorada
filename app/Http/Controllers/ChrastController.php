@@ -35,17 +35,14 @@ class ChrastController extends Controller
     }
 }
 /*
-ID. VIVIENDA
-VIVIENDA
-PROPIETARIO
-ALICUOTA
-CUOTA MENSULA
-CANT. ORDI. PEND.
-CANT. EXTRA. PEND.
-CANT. CUOTAS PEND.
-CANT. DIAS VENCIDOS
-CUOTAS ORDINARIAS
-CUOTAS EXTRA ORDINARIAS
-MONTO DEUDA
-NOTAS DE CREDITOS
+If {morosidad_viviendas.ca_dias_vencido} <= 0 Then
+   Color (152, 191, 221 )
+Else If {morosidad_viviendas.ca_dias_vencido} > 0 and {morosidad_viviendas.ca_dias_vencido} <= 60 Then
+   Color (246, 222, 50 )
+Else If {morosidad_viviendas.ca_dias_vencido} > 60 and {morosidad_viviendas.ca_dias_vencido} <= 90 Then
+   Color (248, 210, 190)
+Else If {morosidad_viviendas.ca_dias_vencido} > 90  Then
+   Color (247, 165, 176 )
+Else
+    crNoColor
 */

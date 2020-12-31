@@ -55,6 +55,22 @@ class CreateTableGacondominio extends Migration
             $table->timestamps();
         });
 
+        Schema::create('datamosoridad', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('id_vivienda');
+            $table->string('propiedad');       //las coloque string manejo en back las fechas
+            $table->string('alicuota');   //las coloque string manejo en back las fechas
+            $table->string('cuota_mensual');          //las coloque string manejo en back las fechas
+            $table->string('cant_extra_pend');
+            $table->string('cant_cuotas_pend');
+            $table->string('cant_dias_vencidos');
+            $table->string('cuotas_ordinarias');
+            $table->string('cuotas_extra_ordinarias');
+            $table->string('monto_deuda');
+            $table->string('notas_de_credito');
+            $table->timestamps();
+        });
+
         Schema::table('viviendas', function (Blueprint $table) {
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });

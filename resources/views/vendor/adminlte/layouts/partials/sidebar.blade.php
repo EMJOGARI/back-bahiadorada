@@ -123,6 +123,12 @@
                                 <span>Cuenta Contable</span>
                             </a>
                         </li>
+                        <li class="{{ Request::is('import-datamoroso*') ? 'active' : '' }}">
+                            <a href="{{ url('import-datamoroso') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Data Moroso</span>
+                            </a>
+                        </li>
                         <li class="{{ Request::is('import-bahia*') ? 'active' : '' }}">
                             <a href="{{ url('import-bahia') }}">
                                 <i class='fa fa-arrow-right'></i>
