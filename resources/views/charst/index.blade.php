@@ -16,7 +16,7 @@
 				<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">GRAFICO</h3>
+						<h3 class="box-title">Morosos</h3>
 					</div>
 					<div class="box-body">
                         {!! $chart->container() !!}
@@ -25,23 +25,7 @@
 					</div>
 					<!-- /.box-body -->
 				</div>
-                <!--
-                    ID. VIVIENDA
-VIVIENDA
-PROPIETARIO
-ALICUOTA
-CUOTA MENSULA
-CANT. ORDI. PEND.
-CANT. EXTRA. PEND.
-CANT. CUOTAS PEND.
-CANT. DIAS VENCIDOS
-CUOTAS ORDINARIAS
-CUOTAS EXTRA ORDINARIAS
-MONTO DEUDA
-NOTAS DE CREDITOS
-
-/.box -->
-
+                <!-- /.box -->
 			</div>
 		</div>
 	</div>
