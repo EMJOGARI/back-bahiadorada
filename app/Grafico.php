@@ -13,7 +13,7 @@ class Grafico extends Model
     protected $fillable = [
         'id_vivienda',
         'vivienda',
-        'propiedad',
+        'propietario',
         'alicuota',
         'cuota_mensual',
         'cant_ordi_pend',

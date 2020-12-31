@@ -58,9 +58,11 @@ class CreateTableGacondominio extends Migration
         Schema::create('datamosoridad', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('id_vivienda');
-            $table->string('propiedad');       //las coloque string manejo en back las fechas
+            $table->string('vivienda');
+            $table->string('propietario');       //las coloque string manejo en back las fechas
             $table->string('alicuota');   //las coloque string manejo en back las fechas
-            $table->string('cuota_mensual');          //las coloque string manejo en back las fechas
+            $table->string('cuota_mensual');
+            $table->string('cant_ordi_pend');         //las coloque string manejo en back las fechas
             $table->string('cant_extra_pend');
             $table->string('cant_cuotas_pend');
             $table->string('cant_dias_vencidos');

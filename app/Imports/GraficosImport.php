@@ -14,22 +14,23 @@ class GraficosImport implements ToModel, WithCustomCsvSettings, WithHeadingRow
     */
     public function model(array $row)
     {
+        //dd($row);
         $data = new Grafico([
-        'id_vivienda' => $row['fecha'],
-        'vivienda' => $row['fecha'],
-        'propiedad' => $row['fecha'],
-        'alicuota' => $row['fecha'],
-        'cuota_mensual' => $row['fecha'],
-        'cant_ordi_pend' => $row['fecha'],
-        'cant_extra_pend' => $row['fecha'],
-        'cant_cuotas_pend' => $row['fecha'],
-        'cant_dias_vencidos' => $row['fecha'],
-        'cuotas_ordinarias' => $row['fecha'],
-        'cuotas_extra_ordinarias' => $row['fecha'],
-        'monto_deuda' => $row['fecha'],
-        'notas_de_credito' => $row['fecha'],
+        'id_vivienda' => $row['id_vivienda'],
+        'vivienda' => $row['vivienda'],
+        'propietario' => $row['propietario'],
+        'alicuota' => $row['alicuota'],
+        'cuota_mensual' => $row['cuota_mensula'],
+        'cant_ordi_pend' => $row['cant_ordi_pend'],
+        'cant_extra_pend' => $row['cant_extra_pend'],
+        'cant_cuotas_pend' => $row['cant_cuotas_pend'],
+        'cant_dias_vencidos' => $row['cant_dias_vencidos'],
+        'cuotas_ordinarias' => $row['cuotas_ordinarias'],
+        'cuotas_extra_ordinarias' => $row['cuotas_extra_ordinarias'],
+        'monto_deuda' => $row['monto_deuda'],
+        'notas_de_credito' => $row['notas_de_creditos'],
         ]);
-        dd($data);
+        //dd($data);
         return $data;
     }
 

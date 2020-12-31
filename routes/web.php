@@ -158,7 +158,7 @@ Route::group(['prefix'=>'import-datamoroso','middleware' => ['auth']], function(
     Route::get('/', 'ImportDatamorosoController@index')
     ->name('import.datamoroso.index')
     ->middleware('permission:import.csv');
-    Route::post('/', 'ImportDatamorosoController@importBahiaCsv')
+    Route::post('/', 'ImportDatamorosoController@importDataMorosoCsv')
     ->name('import.datamoroso.csv')
     ->middleware('permission:import.csv');
 });

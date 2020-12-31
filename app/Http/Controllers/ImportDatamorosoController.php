@@ -27,7 +27,8 @@ class ImportDatamorosoController extends Controller
 
            flash('BAHIA AL DIA Informacion Cargada')->success();
        }catch(\Exception $e){
-           flash('Error al cargar el archivo'. $request->file)->warning();
+           dd($e);
+           flash('Error al cargar el archivo')->warning();
        }
         return view('import.datamoroso.index');
     }
