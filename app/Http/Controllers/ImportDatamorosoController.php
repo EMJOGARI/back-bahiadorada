@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\GraficosImport;
 
-class ImporDatamorosoController extends Controller
+class ImportDatamorosoController extends Controller
 {
     public function index()
     {
-        return view('import.bahia.index');
+        return view('import.datamoroso.index');
     }
 
     public function importDataMorosoCsv(Request $request)
@@ -29,6 +29,6 @@ class ImporDatamorosoController extends Controller
        }catch(\Exception $e){
            flash('Error al cargar el archivo'. $request->file)->warning();
        }
-        return view('import.ctacont.index');
+        return view('import.datamoroso.index');
     }
 }
