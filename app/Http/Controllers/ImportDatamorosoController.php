@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\GraficosImport;
+use Illuminate\Support\Facades\DB;
 
 class ImportDatamorosoController extends Controller
 {
@@ -15,6 +16,7 @@ class ImportDatamorosoController extends Controller
 
     public function importDataMorosoCsv(Request $request)
     {
+        $count =  DB::table('datamosoridad')->count();
        try{
            $this->validate($request, [
                'file'  => 'required|mimes:cvs,txt'
@@ -22,9 +24,14 @@ class ImportDatamorosoController extends Controller
            [
                'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
            ]);
+        //dd($count);
 
-           Excel::import(new GraficosImport,$request->file);
-
+        if ($count >= 1){
+            DB::table('datamosoridad')->truncate();
+            Excel::import(new GraficosImport,$request->file);
+        }else{
+            Excel::import(new GraficosImport,$request->file);
+        }
            flash('BAHIA AL DIA Informacion Cargada')->success();
        }catch(\Exception $e){
            dd($e);

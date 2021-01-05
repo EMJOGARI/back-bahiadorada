@@ -168,6 +168,13 @@ Route::group(['prefix'=>'charst','middleware' => ['auth']], function() {
     ->name('charst.index')
     ->middleware('permission:charst');
 });
+
+Route::group(['prefix'=>'morosidad','middleware' => ['auth']], function() {
+    Route::get('/', 'MorosidadController@index')
+    ->name('morosidad.index')
+    ->middleware('permission:morosidad.list');
+});
+
 Route::resource('principal/index', 'InicioController');
 
 Route::get('/clear-cache', function() {
