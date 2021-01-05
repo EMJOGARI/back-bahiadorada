@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  Maatwebsite\Excel\Facades\Excel;
 use App\Imports\CtaContImport;
+use Illuminate\Support\Facades\DB;
 
 class ImportCtaContController extends Controller
 {
@@ -14,6 +15,7 @@ class ImportCtaContController extends Controller
      }
      public function importCtaContCsv(Request $request)
      {
+        $count =  DB::table('resumenctascont')->count();
         try{
             $this->validate($request, [
                 'file'  => 'required|mimes:cvs,txt'
@@ -22,18 +24,17 @@ class ImportCtaContController extends Controller
                 'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
             ]);
 
-            Excel::import(new CtaContImport,$request->file);
+            if ($count >= 1){
+                DB::table('resumenctascont')->truncate();
+                Excel::import(new CtaContImport,$request->file);
+            }else{
+                Excel::import(new CtaContImport,$request->file);
+            }
 
             flash('Cuentas Contables Cargados')->success();
         }catch(\Exception $e){
-            flash('Error al cargar el archivo'. $request->file .'verifique las columnas numerica separando con (.) los decimales')->warning();
+            flash('Error al cargar el archivo'. $request->file )->warning();
         }
-
-         /* $file = $request->file('file');
-         Excel::import(new CtaContImport, $file);*/
-         //dd($file);
-         //dd($request->file);
-         //'sueldo'=>'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/
 
          return view('import.ctacont.index');
      }

@@ -154,6 +154,28 @@ Route::group(['prefix'=>'import-bahia','middleware' => ['auth']], function() {
     ->middleware('permission:import.csv');
 });
 
+Route::group(['prefix'=>'import-datamoroso','middleware' => ['auth']], function() {
+    Route::get('/', 'ImportDatamorosoController@index')
+    ->name('import.datamoroso.index')
+    ->middleware('permission:import.csv');
+    Route::post('/', 'ImportDatamorosoController@importDataMorosoCsv')
+    ->name('import.datamoroso.csv')
+    ->middleware('permission:import.csv');
+});
+
+Route::group(['prefix'=>'charst','middleware' => ['auth']], function() {
+    Route::get('/', 'ChrastController@slow_payer')
+    ->name('charst.index')
+    ->middleware('permission:charst');
+});
+
+Route::group(['prefix'=>'morosidad','middleware' => ['auth']], function() {
+    Route::get('/', 'MorosidadController@index')
+    ->name('morosidad.index')
+    ->middleware('permission:morosidad.list');
+});
+
+Route::resource('principal/index', 'InicioController');
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');

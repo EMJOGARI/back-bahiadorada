@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Importar Cuenta Contable
+	Importar Bahia al Dia
 @endsection
 
 @section('contentheader_title')
-    Importar Cuenta Contable
+    Importar Bahia al Dia
 @endsection
 
 @section('main-content')

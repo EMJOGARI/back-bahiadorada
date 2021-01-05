@@ -48,6 +48,33 @@
                     </a>
                 </li>
             @endcan
+            @canany(['charst','morosidad.list'])
+                <li class="treeview {{ Request::is('charst*') || Request::is('morosidad*') ? 'active' : '' }}">
+                    <a href="#">
+                        <i class='fa fa-bar-chart'></i>
+                        <span>Graficos</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @can('charst')
+                            <li class="{{ Request::is('charst*') ? 'active' : '' }}">
+                                <a href="{{ url('charst') }}">
+                                    <i class='fa fa-arrow-right'></i>
+                                    <span>Grafico Morosidad</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('morosidad.list')
+                            <li class="{{ Request::is('morosidad*') ? 'active' : '' }}">
+                                <a href="{{ url('morosidad') }}">
+                                    <i class='fa fa-arrow-right'></i>
+                                    <span>Datos Morosidad</span>
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
             @canany(['user.list','role.list','permission.list'])
                 <li class="treeview {{ Request::is('usuarios*') || Request::is('roles*') || Request::is('permisos*') ? 'active' : '' }}">
                     <a href="#">
@@ -113,6 +140,12 @@
                             <a href="{{ url('import-ctacont') }}">
                                 <i class='fa fa-arrow-right'></i>
                                 <span>Cuenta Contable</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('import-datamoroso*') ? 'active' : '' }}">
+                            <a href="{{ url('import-datamoroso') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Data Moroso</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('import-bahia*') ? 'active' : '' }}">
