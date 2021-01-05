@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use Illuminate\Support\Facades\DB;
 use App\User;
 
-use Illuminate\Support\Facades\DB;
 
 class ImportUsersController extends Controller
 {
@@ -17,6 +17,7 @@ class ImportUsersController extends Controller
     }
     public function importUsersCsv(Request $request)
     {
+        $count =  DB::table('users')->count();
         try{
             $this->validate($request, [
                 'file'  => 'required|mimes:cvs,txt'
@@ -25,11 +26,16 @@ class ImportUsersController extends Controller
                 'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
             ]);
 
-            Excel::import(new UsersImport,$request->file);
+            if ($count >= 1){
+                DB::table('users')->truncate();
+                Excel::import(new UsersImport,$request->file);
+            }else{
+                Excel::import(new UsersImport,$request->file);
+            }
 
             flash('Usuarios Cargados')->success();
         }catch(\Exception $e){
-            flash('Error al cargar el archivo'. $request->file .'verifique las columnas')->warning();
+            flash('Error al cargar el archivo'. $request->file)->warning();
         }
 
         return view('import.users.index');

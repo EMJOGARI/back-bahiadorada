@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BahiaImport;
+use Illuminate\Support\Facades\DB;
 
 class ImportBahiaController extends Controller
 {
@@ -15,7 +16,8 @@ class ImportBahiaController extends Controller
     }
     public function importBahiaCsv(Request $request)
     {
-       try{
+        $count =  DB::table('bahia-al-dia')->count();
+        try{
            $this->validate($request, [
                'file'  => 'required|mimes:cvs,txt'
            ],
@@ -23,12 +25,17 @@ class ImportBahiaController extends Controller
                'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
            ]);
 
-           Excel::import(new BahiaImport,$request->file);
+           if ($count >= 1){
+            DB::table('bahia-al-dia')->truncate();
+                Excel::import(new BahiaImport,$request->file);
+            }else{
+                Excel::import(new BahiaImport,$request->file);
+            }
 
            flash('BAHIA AL DIA Informacion Cargada')->success();
-       }catch(\Exception $e){
+        }catch(\Exception $e){
            flash('Error al cargar el archivo'. $request->file)->warning();
-       }
+        }
         return view('import.ctacont.index');
     }
 }

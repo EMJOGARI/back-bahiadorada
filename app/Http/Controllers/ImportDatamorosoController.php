@@ -17,26 +17,25 @@ class ImportDatamorosoController extends Controller
     public function importDataMorosoCsv(Request $request)
     {
         $count =  DB::table('datamosoridad')->count();
-       try{
+        try{
            $this->validate($request, [
                'file'  => 'required|mimes:cvs,txt'
            ],
            [
                'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
            ]);
-        //dd($count);
 
-        if ($count >= 1){
-            DB::table('datamosoridad')->truncate();
-            Excel::import(new GraficosImport,$request->file);
-        }else{
-            Excel::import(new GraficosImport,$request->file);
-        }
-           flash('BAHIA AL DIA Informacion Cargada')->success();
-       }catch(\Exception $e){
-           dd($e);
+            if ($count >= 1){
+                DB::table('datamosoridad')->truncate();
+                Excel::import(new GraficosImport,$request->file);
+            }else{
+                Excel::import(new GraficosImport,$request->file);
+            }
+
+           flash('Informacion Cargada')->success();
+        }catch(\Exception $e){
            flash('Error al cargar el archivo')->warning();
-       }
+        }
         return view('import.datamoroso.index');
     }
 }

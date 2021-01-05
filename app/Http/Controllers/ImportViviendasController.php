@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ViviendaImport;
+use Illuminate\Support\Facades\DB;
 
 class ImportViviendasController extends Controller
 {
@@ -14,6 +15,7 @@ class ImportViviendasController extends Controller
     }
     public function importViviendaCsv(Request $request)
     {
+        $count =  DB::table('viviendas')->count();
         try{
             $this->validate($request, [
                 'file'  => 'required|mimes:cvs,txt'
@@ -22,11 +24,16 @@ class ImportViviendasController extends Controller
                 'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
             ]);
 
-            Excel::import(new ViviendaImport,$request->file);
+            if ($count >= 1){
+                DB::table('viviendas')->truncate();
+                Excel::import(new ViviendaImport,$request->file);
+            }else{
+                Excel::import(new ViviendaImport,$request->file);
+            }
 
             flash('Viviendas Cargadas')->success();
         }catch(\Exception $e){
-            flash('Error al cargar el archivo'. $request->file .'verifique las columnas')->warning();
+            flash('Error al cargar el archivo'. $request->file)->warning();
         }
         return view('import.vivienda.index');
     }
