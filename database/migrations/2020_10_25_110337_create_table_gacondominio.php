@@ -74,7 +74,7 @@ class CreateTableGacondominio extends Migration
             $table->timestamps();
         });
 
-        Schema::table('viviendas', function (Blueprint $table) {
+        /*Schema::table('viviendas', function (Blueprint $table) {
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
 
@@ -101,5 +101,6 @@ class CreateTableGacondominio extends Migration
         Schema::dropIfExists('viviendas');
         Schema::dropIfExists('cuotas');
         Schema::dropIfExists('resumenctascont');
+        Schema::dropIfExists('datamosoridad');
     }
 }

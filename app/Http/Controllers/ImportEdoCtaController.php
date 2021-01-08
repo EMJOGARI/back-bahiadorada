@@ -16,7 +16,7 @@ class ImportEdoCtaController extends Controller
     public function importEdoCtaCsv(Request $request)
     {
         $count =  DB::table('cuotas')->count();
-        dd($count);
+        //dd($count);
         try{
             $this->validate($request, [
                 'file'  => 'required|mimes:cvs,txt'

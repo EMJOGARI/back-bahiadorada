@@ -24,15 +24,16 @@ class ImportViviendasController extends Controller
                 'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
             ]);
 
-            if ($count >= 1){
-                DB::table('viviendas')->truncate();
+            //if ($count >= 1){
+            //    DB::table('viviendas')->truncate();
+            //    Excel::import(new ViviendaImport,$request->file);
+            //}else{
                 Excel::import(new ViviendaImport,$request->file);
-            }else{
-                Excel::import(new ViviendaImport,$request->file);
-            }
+            //}
 
             flash('Viviendas Cargadas')->success();
         }catch(\Exception $e){
+            //dd($e)
             flash('Error al cargar el archivo'. $request->file)->warning();
         }
         return view('import.vivienda.index');
