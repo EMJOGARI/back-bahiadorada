@@ -7,7 +7,7 @@
         <select name="livingplace" id="livingplace" class="form-control select2">
                 <option value="">Seleccioné una Vivienda</option>
            @foreach($living as $liv)
-                <option value="{{ $liv->vivienda }}">{{ $liv->vivienda.' - '.$liv->name }}</option>
+                <option value="{{ $liv->vivienda }}">{{ $liv->vivienda }}</option>
             @endforeach
         </select>
         <span class="input-group-btn">

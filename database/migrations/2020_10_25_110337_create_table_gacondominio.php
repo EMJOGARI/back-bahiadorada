@@ -73,13 +73,13 @@ class CreateTableGacondominio extends Migration
             $table->timestamps();
         });
 
-        Schema::table('viviendas', function (Blueprint $table) {
+        /*Schema::table('viviendas', function (Blueprint $table) {
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('cuotas', function (Blueprint $table) {
             $table->foreign('id_vivienda')->references('id')->on('viviendas')->onDelete('cascade');
-        });
+        });*/
     }
 
     /**
@@ -89,16 +89,17 @@ class CreateTableGacondominio extends Migration
      */
     public function down()
     {
-        Schema::table('viviendas', function (Blueprint $table) {
+        /*Schema::table('viviendas', function (Blueprint $table) {
             $table->dropForeign(['id_usuario']);
         });
         Schema::table('cuotas', function (Blueprint $table) {
             $table->dropForeign(['id_vivienda']);
-        });
+        });*/
 
         Schema::dropIfExists('bahia-al-dia');
         Schema::dropIfExists('viviendas');
         Schema::dropIfExists('cuotas');
         Schema::dropIfExists('resumenctascont');
+        Schema::dropIfExists('datamosoridad');
     }
 }
