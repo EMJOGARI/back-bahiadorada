@@ -12,7 +12,7 @@ class Cuota extends Model
     // Columnas de la tabla
     protected $fillable = [
         'id_vivienda',
-        'vivienda',
+        'cod_cuota',
         'fe_emision',
         'fe_vencimiento',
         'fe_pago',

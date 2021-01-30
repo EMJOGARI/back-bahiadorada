@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ url('/home') }}" class="logo">
+    <a href="https://bahiadorada.com.ve/" class="logo">
        <img src="{{ url('/img/logoportal.png') }}" alt="Bahia Dorada">
        {{-- <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>T</b>GO</span>
