@@ -16,8 +16,19 @@
         <th>NC</th>
     </thead>
     <tbody>
+
         @foreach ($datos as $dat)
-            <tr>
+
+        @if ($dat->cant_dias_vencidos <= 0)
+            <tr style="background: rgb(13, 132, 237, 0.8)">
+        @elseif ($dat->cant_dias_vencidos > 0 && $dat->cant_dias_vencidos <= 60)
+            <tr style="background: rgb(247, 244, 25, 0.8)">
+        @elseif ($dat->cant_dias_vencidos > 60 && $dat->cant_dias_vencidos <= 90)
+            <tr style="background: rgb(241, 131, 14, 0.8)">
+        @elseif ($dat->cant_dias_vencidos > 90)
+            <tr style="background: rgb(241, 14, 14, 0.8)">
+        @endif
+
                 <td>{{ $dat->vivienda }}</td>
                 <td>{{ $dat->alicuota }}</td>
                 <td>{{ $dat->cuota_mensual }}</td>

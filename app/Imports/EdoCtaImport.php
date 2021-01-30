@@ -11,13 +11,14 @@ class EdoCtaImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
 {
     public function model(array $row)
     {
+        //dd($row);
         $data = new Cuota([
-            'id' => $row['id'],
             'id_vivienda' => $row['id_vivienda'],
-            'fe_emision' => $row['fecha_emision'],
-            'fe_vencimiento' => $row['fecha_vencimiento'],
-            'fe_pago' => $row['fecha_pago'],
-            'mo_cuota' => $row['monto_cuota'],
+            'cod_cuota' => $row['cod_cuota'],
+            'fe_emision' => $row['fe_emision'],
+            'fe_vencimiento' => $row['fe_vencimiento'],
+            'fe_pago' => $row['fe_cobro'],
+            'mo_cuota' => $row['mo_cuota'],
             'mora_cuota' => $row['mora_cuota'],
             'abono_cuota' => $row['abono_cuota'],
             'saldo_cuota' => $row['saldo_cuota'],

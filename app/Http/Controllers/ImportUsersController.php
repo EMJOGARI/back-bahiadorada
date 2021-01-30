@@ -26,12 +26,12 @@ class ImportUsersController extends Controller
                 'file.mimes' => 'Tipo de archivo permitido es CVS o TXT'
             ]);
 
-            //if ($count >= 1){
-            //    DB::table('users')->truncate();
-            //    Excel::import(new UsersImport,$request->file);
-            //}else{
+            if ($count >= 1){
+                DB::table('users')->where('id','>',2)->delete();
                 Excel::import(new UsersImport,$request->file);
-            //}
+            }else{
+                Excel::import(new UsersImport,$request->file);
+            }
 
             flash('Usuarios Cargados')->success();
         }catch(\Exception $e){
