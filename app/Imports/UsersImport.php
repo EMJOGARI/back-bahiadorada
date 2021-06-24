@@ -21,8 +21,8 @@ class UsersImport implements ToModel, WithCustomCsvSettings , WithHeadingRow
         $data = new User([
             'id_user' => $row['id_usuario'],
             'id_propietario' => (int)$row['id_propietario'],
-            'name' => $row['nombre'],
-            'email' => Str::lower($row['usuario']), //upper($str)
+            'name' => $row['name'],
+            'email' => Str::lower($row['email']), //upper($str)
             'password' => bcrypt('12345'),
             ]);
         $data->assignRole($rol);

@@ -34,7 +34,7 @@ class ChrastController extends Controller
 
         $chart = new MorososCrart;
         $chart->labels(['SOLVENTES','CUOTAS VENCIDAS', 'PROXÍMO A LEGAL', 'DPTO LEGAL']);
-        $chart->dataset('Personas', 'horizontalBar', [$data1, $data2, $data3, $data4])
+        $chart->dataset('Apartamentos', 'horizontalBar', [$data1, $data2, $data3, $data4])
             //->color($borderColors)
             ->backgroundcolor($fillColors);
         $chart->options([

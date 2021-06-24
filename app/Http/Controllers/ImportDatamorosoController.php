@@ -34,7 +34,8 @@ class ImportDatamorosoController extends Controller
 
            flash('Informacion Cargada')->success();
         }catch(\Exception $e){
-           flash('Error al cargar el archivo')->warning();
+            //dd($e);
+            flash('Error al cargar el archivo')->warning();
         }
         return view('import.datamoroso.index');
     }

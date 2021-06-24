@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       
+        Storage::deleteDirectory('filepdf');
+        Storage::makeDirectory('filepdf');
         $this->call(RolesAndPermissionsSeeder::class);
         //$this->call(DataColombiaSeeder::class); 
     }

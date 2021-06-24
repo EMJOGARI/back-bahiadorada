@@ -34,6 +34,7 @@ class ImportBahiaController extends Controller
 
            flash('BAHIA AL DIA Informacion Cargada')->success();
         }catch(\Exception $e){
+            //dd($e);
            flash('Error al cargar el archivo'. $request->file)->warning();
         }
         return view('import.ctacont.index');

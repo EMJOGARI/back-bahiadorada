@@ -9,7 +9,7 @@
     <div id="app" v-cloak>
         <div class="login-box">
             <div class="login-logo">
-                <a href="{{ url('/home') }}"><img src="{{ url('/img/logoportal.png') }}" alt="Bahia Dorada"></a>
+                <a href="https://pampatar.bahiadorada.com.ve/wp/{{-- url('/home') --}}"><img src="{{ url('/img/logoportal.png') }}" alt="Bahia Dorada"></a>
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)

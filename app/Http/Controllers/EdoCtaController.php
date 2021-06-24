@@ -24,6 +24,7 @@ class EdoCtaController extends Controller
             ->when($livingplace, function ($query, $livingplace) {
                 return $query->where('v.vivienda','like',$livingplace);
             })
+            ->orderBy('status', 'desc')
             ->get();
             if ($datos != ""){
                 $saldo = 0;
@@ -47,6 +48,7 @@ class EdoCtaController extends Controller
             ->when($livingplace, function ($query, $livingplace) {
                 return $query->where('v.vivienda','=',$livingplace);
             })
+            ->orderBy('status', 'desc')
             ->get();
 
             if ($datos != ""){

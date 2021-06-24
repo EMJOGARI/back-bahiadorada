@@ -14,11 +14,21 @@ class CreateTableGacondominio extends Migration
     public function up()
     {
         //->nullable()
+         Schema::create('file', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('name_original');
+            $table->string('link');
+            $table->timestamps();
+        });
+        
         Schema::create('bahia-al-dia', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('fecha');
             $table->string('area');
             $table->string('actividad');
+            $table->string('status');
             $table->timestamps();
         });
 
@@ -33,16 +43,16 @@ class CreateTableGacondominio extends Migration
         Schema::create('cuotas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_vivienda')->unsigned();
-            $table->string('cod_cuota');
-            $table->string('fe_emision');       //las coloque string manejo en back las fechas
-            $table->string('fe_vencimiento');   //las coloque string manejo en back las fechas
-            $table->string('fe_pago');          //las coloque string manejo en back las fechas
-            $table->string('mo_cuota');
-            $table->string('mora_cuota');
-            $table->string('abono_cuota');
-            $table->string('saldo_cuota');
-            $table->string('tipo', 100);
-            $table->string('status', 100);
+            $table->string('cod_cuota')->default('');
+            $table->string('fe_emision')->default('');       //las coloque string manejo en back las fechas
+            $table->string('fe_vencimiento')->default('');   //las coloque string manejo en back las fechas
+            $table->string('fe_pago')->default('');          //las coloque string manejo en back las fechas
+            $table->string('mo_cuota')->default('');
+            $table->string('mora_cuota')->default('');
+            $table->string('abono_cuota')->default('');
+            $table->string('saldo_cuota')->default('');
+            $table->string('tipo', 100)->default('');
+            $table->string('status', 100)->default('');
             $table->timestamps();
         });
 
@@ -51,8 +61,8 @@ class CreateTableGacondominio extends Migration
             $table->bigInteger('id_ctacontable');
             $table->string('nomctacontable', 100);
             $table->string('cod_ctacontable', 25);
-            $table->decimal('mo_ctacontable_bs',10,2); //10,2
-            $table->decimal('mo_ctacontable_ss',10,2);
+            $table->decimal('mo_ctacontable_bs',15,2); //10,2
+            $table->decimal('mo_ctacontable_ss',15,2);
             $table->timestamps();
         });
 
@@ -96,7 +106,7 @@ class CreateTableGacondominio extends Migration
         Schema::table('cuotas', function (Blueprint $table) {
             $table->dropForeign(['id_vivienda']);
         });*/
-
+        Schema::dropIfExists('file');
         Schema::dropIfExists('bahia-al-dia');
         Schema::dropIfExists('viviendas');
         Schema::dropIfExists('cuotas');

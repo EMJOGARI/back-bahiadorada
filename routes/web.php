@@ -175,7 +175,20 @@ Route::group(['prefix'=>'morosidad','middleware' => ['auth']], function() {
     ->middleware('permission:morosidad.list');
 });
 
-Route::resource('principal/index', 'InicioController');
+Route::group(['prefix'=>'pdf','middleware' => ['auth']], function() {
+    Route::get('/', 'ShowPdfController@index')
+    ->name('pdf.index')
+    ->middleware('permission:bahia.list');
+});
+
+Route::group(['prefix'=>'pdf-import','middleware' => ['auth']], function() {
+    Route::get('/', 'ShowPdfController@showPdf')
+    ->name('pdf-import.index')
+    ->middleware('permission:import.csv');
+    Route::post('/', 'ShowPdfController@importPdf')
+    ->name('pdf-import')
+    ->middleware('permission:import.csv');
+});
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
@@ -185,11 +198,12 @@ Route::get('/clear-cache', function() {
     Artisan::call('view:clear');
     return "Cache is cleared";
 });
-//->middleware('auth', 'role:admin');
-Route::get('/bdrefresh', function() {
-    Artisan::call('migrate:refresh --seed');
-    return "Refresh Data Base";
+Route::get('/link', function() {
+    Artisan::call('storage:link');
+    return "link creado";
 });
-//php artisan migrate:refresh --seed
-
+/*Route::get('/bdrefresh', function() {
+    Artisan::call('migrate:fresh --seed');
+    return "Refresh Data Base";
+});*/
 

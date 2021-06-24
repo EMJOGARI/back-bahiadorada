@@ -20,7 +20,7 @@
             <li class="{{ Request::is('bahia*') ? 'active' : '' }}">
                 <a href="{{ url('bahia') }}">
                     <i class='fa fa-arrow-right'></i>
-                    <span>BAHIA AL DIA</span>
+                    <span>Bahia al Dia</span>
                 </a>
             </li>
             @endcan
@@ -45,6 +45,14 @@
                     <a href="{{ url('cuenta-contable') }}">
                         <i class='fa fa-arrow-right'></i>
                         <span>Cuenta Contables</span>
+                    </a>
+                </li>
+            @endcan
+            @can('bahia.list')
+                <li class="{{ Request::is('pdf*') ? 'active' : '' }}">
+                    <a href="{{ url('pdf') }}">
+                        <i class='fa fa-arrow-right'></i>
+                        <span>Gestion Administrativa</span>
                     </a>
                 </li>
             @endcan
@@ -152,6 +160,12 @@
                             <a href="{{ url('import-bahia') }}">
                                 <i class='fa fa-arrow-right'></i>
                                 <span>BAHIA AL DIA</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('pdf-import*') ? 'active' : '' }}">
+                            <a href="{{ url('pdf-import') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Informe PDF</span>
                             </a>
                         </li>
                     </ul>

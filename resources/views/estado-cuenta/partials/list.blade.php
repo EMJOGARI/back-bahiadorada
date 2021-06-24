@@ -4,11 +4,11 @@
 <table class="table table-bordered data-table display nowrap" style="width:100%">
     <thead>
         <th>Vivienda</th>
-        <th>Fecha Emi.</th>
+        {{--<th>Fecha Emi.</th>--}}
         <th>Fecha Ven.</th>
         <th>Fecha Pago</th>
         <th>Cuota</th>
-        <th>Mora</th>
+        {{--<th>Mora</th>--}}
         <th>Saldo</th>
         <th>Tipo</th>
         <th>Status</th>
@@ -17,14 +17,26 @@
         @foreach ($datos as $dat)
             <tr>
                 <td>{{ $dat->vivienda }}</td>
-                <td>{{ $dat->fe_emision }}</td>
+                {{-- <td>{{ $dat->fe_emision }}</td>--}}
                 <td>{{ $dat->fe_vencimiento }}</td>
                 <td>{{ $dat->fe_pago }}</td>
                 <td>{{ $dat->mo_cuota }}</td>
-                <td>{{ $dat->mora_cuota }}</td>
+                {{--<td>{{ $dat->mora_cuota }}</td>--}}
                 <td>{{ $dat->saldo_cuota }}</td>
                 <td>{{ $dat->tipo }}</td>
-                <td>{{ $dat->status }}</td>
+                {{--<td>{{ $dat->status }}</td> --}}
+                
+                @if ($dat->status == 'PENDIENTE')
+                    <td>
+                        <span class="badge bg-red">{{ $dat->status }}</span>
+                    </td>
+                @else
+                    <td>
+                        <span class="badge bg-light-blue">{{ $dat->status }}</span>
+                    </td>
+                @endif
+               
+                
             </tr>
         @endforeach
     </tbody>

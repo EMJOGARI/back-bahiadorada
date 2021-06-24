@@ -13,11 +13,12 @@ class BahiaImport implements ToModel, WithCustomCsvSettings, WithHeadingRow
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {
+    {//dd($row);
         $data = new Bahia([
-            'fecha'  => $row['fecha'],
+            'fecha'  => $row['fe_bahia'],
             'area' => $row['area'],
             'actividad' => $row['actividad'],
+            'status' => $row['status'],
         ]);
         return $data;
 

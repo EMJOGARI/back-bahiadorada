@@ -5,7 +5,8 @@
     <thead>
         <th width="20%">Fecha</th>
         <th width="20%">Área</th>
-        <th width="60%">Actividad</th>
+        <th width="40%">Actividad</th>
+        <th width="20%">Estatus</th>
     </thead>
     <tbody>
         @foreach ($datos as $dat)
@@ -13,6 +14,7 @@
                 <td class="text-center">{{ $dat->fecha }}</td>
                 <td>{{ $dat->area }}</td>
                 <td class="text-center">{{ $dat->actividad }}</td>
+                <td class="text-center">{{ $dat->status }}</td>
             </tr>
         @endforeach
     </tbody>

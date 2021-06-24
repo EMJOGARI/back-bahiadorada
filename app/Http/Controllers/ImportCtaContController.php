@@ -33,6 +33,7 @@ class ImportCtaContController extends Controller
 
             flash('Cuentas Contables Cargados')->success();
         }catch(\Exception $e){
+            //dd($e);
             flash('Error al cargar el archivo'. $request->file )->warning();
         }
 

@@ -14,5 +14,6 @@ class Bahia extends Model
         'fecha',
         'area',
         'actividad',
+        'status'
     ];
 }
