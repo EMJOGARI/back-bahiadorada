@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_title')
-    Lista de Archivos
+    Gestion Administrativa
 @endsection
 
 @section('main-content')
@@ -16,8 +16,7 @@
 				<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-body">
-						@include('pdf.partials.list')
-
+						@include('files-and-document.gestion-administrativa.partials.list')
 					</div>
 					<!-- /.box-body -->
 				</div>

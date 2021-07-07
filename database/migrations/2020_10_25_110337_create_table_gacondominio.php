@@ -14,15 +14,16 @@ class CreateTableGacondominio extends Migration
     public function up()
     {
         //->nullable()
-         Schema::create('file', function (Blueprint $table) {
+        Schema::create('file', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
             $table->string('name_original');
+            $table->string('category')->nullable();
             $table->string('link');
             $table->timestamps();
         });
-        
+
         Schema::create('bahia-al-dia', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('fecha');

@@ -62,6 +62,10 @@ class RolesAndPermissionsSeeder extends Seeder
 
         Permission::create(['module' => 'morosidad','name' => 'morosidad.list','description' => 'Lista de Morosidad']);
 
+        Permission::create(['module' => 'files-and-document','name' => 'files-and-document.create','description' => 'Crear un Registro de PDF']);
+        Permission::create(['module' => 'files-and-document','name' => 'files-and-document.list','description' => 'Ver Lista de PDF']);
+        Permission::create(['module' => 'files-and-document','name' => 'files-and-document.delete','description' => 'Eliminar Archivos PDF']);
+
 
 
         // create roles and assign existing permissions
@@ -102,6 +106,10 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol2->givePermissionTo('charst');
                 /*BAHIA AL DIA*/
                 $rol2->givePermissionTo('morosidad.list');
+                 /*PDF*/
+                 $rol2->givePermissionTo('files-and-document.create');
+                 $rol2->givePermissionTo('files-and-document.delete');
+                 $rol2->givePermissionTo('files-and-document.list');
 
         /******************************************************/
         $rol3 = Role::create(
@@ -116,6 +124,8 @@ class RolesAndPermissionsSeeder extends Seeder
                 $rol3->givePermissionTo('estado-cuenta');
                 $rol3->givePermissionTo('cuenta-contable');
                 $rol3->givePermissionTo('charst');
+                $rol3->givePermissionTo('morosidad.list');
+                $rol3->givePermissionTo('files-and-document.list');
 
         /******************************************************/
         // create users

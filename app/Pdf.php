@@ -14,6 +14,7 @@ class Pdf extends Model
         'name',
         'description',
         'name_original',
-        'link'
+        'link',
+        'category'
     ];
 }

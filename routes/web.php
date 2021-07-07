@@ -175,10 +175,30 @@ Route::group(['prefix'=>'morosidad','middleware' => ['auth']], function() {
     ->middleware('permission:morosidad.list');
 });
 
-Route::group(['prefix'=>'pdf','middleware' => ['auth']], function() {
-    Route::get('/', 'ShowPdfController@index')
-    ->name('pdf.index')
-    ->middleware('permission:bahia.list');
+Route::group(['prefix'=>'files-and-document','middleware' => ['auth']], function() {
+    Route::delete('destroy/{id}', 'ShowPdfController@destroy')
+    ->name('files-and-document.destroy')
+    ->middleware('permission:files-and-document.delete');
+});
+Route::group(['prefix'=>'gestion-administrativa','middleware' => ['auth']], function() {
+    Route::get('/', 'ShowPdfController@ShowGestionAdministrativa')
+    ->name('files-and-document.gestion-administrativa.index')
+    ->middleware('permission:files-and-document.list');
+});
+Route::group(['prefix'=>'talento-humano','middleware' => ['auth']], function() {
+    Route::get('/', 'ShowPdfController@ShowTalentoHumano')
+    ->name('files-and-document.talento-humano.index')
+    ->middleware('permission:files-and-document.list');
+});
+Route::group(['prefix'=>'comunicados','middleware' => ['auth']], function() {
+    Route::get('/', 'ShowPdfController@ShowComunicados')
+    ->name('files-and-document.comunicados.index')
+    ->middleware('permission:files-and-document.list');
+});
+Route::group(['prefix'=>'normas-y-reglamentos','middleware' => ['auth']], function() {
+    Route::get('/', 'ShowPdfController@ShowNormasyReglamentos')
+    ->name('files-and-document.normas-y-reglamentos.index')
+    ->middleware('permission:files-and-document.list');
 });
 
 Route::group(['prefix'=>'pdf-import','middleware' => ['auth']], function() {

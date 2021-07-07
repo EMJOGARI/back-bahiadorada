@@ -48,14 +48,42 @@
                     </a>
                 </li>
             @endcan
-            @can('bahia.list')
-                <li class="{{ Request::is('pdf*') ? 'active' : '' }}">
-                    <a href="{{ url('pdf') }}">
-                        <i class='fa fa-arrow-right'></i>
-                        <span>Gestion Administrativa</span>
-                    </a>
-                </li>
-            @endcan
+
+            <li class="treeview {{ Request::is('gestion-administrativa*') || Request::is('talento-humano*') || Request::is('comunicados*') || Request::is('normas-y-reglamentos*') ? 'active' : '' }}">
+                <a href="#">
+                    <i class='fa fa-file-text-o'></i>
+                    <span>Informes y Documentos</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    @can('files-and-document.list')
+                        <li class="{{ Request::is('gestion-administrativa*') ? 'active' : '' }}">
+                            <a href="{{ url('gestion-administrativa') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Gestion Administrativa</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('talento-humano*') ? 'active' : '' }}">
+                            <a href="{{ url('talento-humano') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Talento Humano</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('comunicados*') ? 'active' : '' }}">
+                            <a href="{{ url('comunicados') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Comunicados</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('normas-y-reglamentos*') ? 'active' : '' }}">
+                            <a href="{{ url('normas-y-reglamentos') }}">
+                                <i class='fa fa-arrow-right'></i>
+                                <span>Normas y Reglamentos</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
             @canany(['charst','morosidad.list'])
                 <li class="treeview {{ Request::is('charst*') || Request::is('morosidad*') ? 'active' : '' }}">
                     <a href="#">
